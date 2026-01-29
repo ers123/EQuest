@@ -2,7 +2,15 @@
 // EQuest Type Definitions
 // ============================================
 
-// User Grade Level
+// User Level (1-5, based on US Grade system)
+// Level 1 = US 3rd Grade (Basic)
+// Level 2 = US 4th Grade (Elementary)
+// Level 3 = US 5th Grade (Intermediate)
+// Level 4 = US 6th Grade (Advanced)
+// Level 5 = US 7th Grade (Challenge)
+export type Level = 1 | 2 | 3 | 4 | 5;
+
+// Legacy Grade type for migration support
 export type Grade = 4 | 5 | 6;
 
 // App Navigation Screens
@@ -31,7 +39,7 @@ export interface Word {
   meaning: string;        // Korean meaning
   example: string;        // Example sentence
   exampleKorean?: string; // Korean translation of example
-  grade: Grade;
+  level: Level;           // Difficulty level (1-5)
   topic: string;          // Category: animals, emotions, travel, etc.
   audioUrl?: string;
 }
@@ -64,7 +72,7 @@ export interface Story {
   titleKorean: string;
   author: string;
   collection: 'aesop' | 'grimm' | 'andersen' | 'world' | 'classic' | 'science';
-  difficulty: Grade;
+  level: Level;           // Difficulty level (1-5)
   description: string;
   descriptionKorean: string;
   chapters: StoryChapter[];
@@ -148,7 +156,7 @@ export interface UserStats {
 export interface UserProgress {
   version: number;          // For migrations
   userName: string;
-  grade: Grade;
+  level: Level;             // User's selected level (1-5)
   createdAt: string;
 
   // Stats & XP
@@ -315,6 +323,102 @@ export const LEARNING_MODES: LearningMode[] = [
 ];
 
 // ============================================
+// Level System
+// ============================================
+
+export interface LevelInfo {
+  level: Level;
+  usGrade: string;
+  name: string;
+  nameKorean: string;
+  description: string;
+  descriptionKorean: string;
+  emoji: string;
+  wordsPerChapter: string;
+  chapters: string;
+  totalWords: string;
+  estimatedTime: string;
+}
+
+export const LEVEL_INFO: LevelInfo[] = [
+  {
+    level: 1,
+    usGrade: '3rd Grade',
+    name: 'Basic',
+    nameKorean: '기초',
+    description: 'Simple words and short sentences',
+    descriptionKorean: '간단한 단어와 짧은 문장',
+    emoji: '🌱',
+    wordsPerChapter: '150-200',
+    chapters: '3-4',
+    totalWords: '500-800',
+    estimatedTime: '10-15 min',
+  },
+  {
+    level: 2,
+    usGrade: '4th Grade',
+    name: 'Elementary',
+    nameKorean: '초급',
+    description: 'Basic vocabulary and easy stories',
+    descriptionKorean: '기본 단어와 쉬운 이야기',
+    emoji: '🌟',
+    wordsPerChapter: '200-300',
+    chapters: '4-5',
+    totalWords: '800-1,500',
+    estimatedTime: '15-25 min',
+  },
+  {
+    level: 3,
+    usGrade: '5th Grade',
+    name: 'Intermediate',
+    nameKorean: '중급',
+    description: 'Expanded vocabulary and longer stories',
+    descriptionKorean: '확장된 단어와 긴 이야기',
+    emoji: '⭐',
+    wordsPerChapter: '300-400',
+    chapters: '5-6',
+    totalWords: '1,500-2,400',
+    estimatedTime: '25-35 min',
+  },
+  {
+    level: 4,
+    usGrade: '6th Grade',
+    name: 'Advanced',
+    nameKorean: '고급',
+    description: 'Complex sentences and rich vocabulary',
+    descriptionKorean: '복잡한 문장과 풍부한 단어',
+    emoji: '🌠',
+    wordsPerChapter: '400-500',
+    chapters: '6-7',
+    totalWords: '2,400-3,500',
+    estimatedTime: '35-45 min',
+  },
+  {
+    level: 5,
+    usGrade: '7th Grade',
+    name: 'Challenge',
+    nameKorean: '심화',
+    description: 'Advanced reading and comprehension',
+    descriptionKorean: '심화 읽기와 이해',
+    emoji: '🏆',
+    wordsPerChapter: '500+',
+    chapters: '7+',
+    totalWords: '3,500+',
+    estimatedTime: '45+ min',
+  },
+];
+
+// Migration utility: Convert old Grade (4/5/6) to new Level (1-5)
+export function gradeToLevel(grade: Grade): Level {
+  switch (grade) {
+    case 4: return 2;  // Grade 4 → Level 2 (US 4th Grade)
+    case 5: return 3;  // Grade 5 → Level 3 (US 5th Grade)
+    case 6: return 4;  // Grade 6 → Level 4 (US 6th Grade)
+    default: return 2;
+  }
+}
+
+// ============================================
 // Default Values
 // ============================================
 
@@ -341,9 +445,9 @@ export const DEFAULT_STATS: UserStats = {
 };
 
 export const INITIAL_PROGRESS: UserProgress = {
-  version: 1,
+  version: 2,
   userName: '',
-  grade: 4,
+  level: 1,
   createdAt: new Date().toISOString(),
   stats: DEFAULT_STATS,
   stories: {},

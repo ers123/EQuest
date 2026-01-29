@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useProgressStore } from '@/store/useProgressStore';
-import { Word, Grade } from '@/types';
+import { Word, Level, LEVEL_INFO } from '@/types';
 import { VOCABULARY } from '@/data/vocabulary';
 import { useSRS } from '@/hooks/useSRS';
 import { Card } from '@/components/ui/Card';
@@ -48,7 +48,7 @@ const topicEmojis: Record<string, string> = {
 export function VocabList({ onBack, onStartQuiz }: VocabListProps) {
   const { vocabulary } = useProgressStore();
   const { getStats, getDueWords, addWord } = useSRS();
-  const [selectedGrade, setSelectedGrade] = useState<Grade | 'all'>('all');
+  const [selectedLevel, setSelectedLevel] = useState<Level | 'all'>('all');
   const [selectedTopic, setSelectedTopic] = useState<string | 'all'>('all');
 
   const stats = getStats();
@@ -63,7 +63,7 @@ export function VocabList({ onBack, onStartQuiz }: VocabListProps) {
   // Filter vocabulary
   const filteredVocab = useMemo(() => {
     return VOCABULARY.filter((word) => {
-      if (selectedGrade !== 'all' && word.grade !== selectedGrade) {
+      if (selectedLevel !== 'all' && word.level !== selectedLevel) {
         return false;
       }
       if (selectedTopic !== 'all' && word.topic !== selectedTopic) {
@@ -71,7 +71,7 @@ export function VocabList({ onBack, onStartQuiz }: VocabListProps) {
       }
       return true;
     });
-  }, [selectedGrade, selectedTopic]);
+  }, [selectedLevel, selectedTopic]);
 
   // Group vocabulary by topic
   const groupedVocab = useMemo(() => {
@@ -271,21 +271,32 @@ export function VocabList({ onBack, onStartQuiz }: VocabListProps) {
         <div className="mb-4">
           <div className="flex items-center gap-2 mb-2">
             <Filter className="w-4 h-4 text-gray-400" />
-            <span className="text-sm font-medium text-gray-500">Filter by Grade</span>
+            <span className="text-sm font-medium text-gray-500">Filter by Level</span>
           </div>
           <div className="flex gap-2 overflow-x-auto pb-2">
-            {(['all', 4, 5, 6] as const).map((g) => (
+            <button
+              onClick={() => setSelectedLevel('all')}
+              className={cn(
+                'px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors',
+                selectedLevel === 'all'
+                  ? 'bg-secondary text-white'
+                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              )}
+            >
+              All Levels
+            </button>
+            {LEVEL_INFO.map((info) => (
               <button
-                key={g}
-                onClick={() => setSelectedGrade(g)}
+                key={info.level}
+                onClick={() => setSelectedLevel(info.level)}
                 className={cn(
                   'px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors',
-                  selectedGrade === g
+                  selectedLevel === info.level
                     ? 'bg-secondary text-white'
                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 )}
               >
-                {g === 'all' ? 'All Grades' : `Grade ${g}`}
+                {info.emoji} Lv.{info.level}
               </button>
             ))}
           </div>
@@ -370,9 +381,9 @@ export function VocabList({ onBack, onStartQuiz }: VocabListProps) {
                       <span className="text-sm text-gray-500">{word.meaning}</span>
                     </div>
 
-                    {/* Grade badge */}
+                    {/* Level badge */}
                     <span className="text-xs text-gray-400 px-2 py-1 bg-gray-100 rounded-full">
-                      G{word.grade}
+                      Lv.{word.level}
                     </span>
 
                     {/* Audio button */}

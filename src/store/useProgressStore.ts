@@ -8,10 +8,12 @@ import {
   StoryProgress,
   SRSItem,
   Achievement,
+  Level,
   Grade,
   INITIAL_PROGRESS,
   DEFAULT_STATS,
   XP_REWARDS,
+  gradeToLevel,
 } from '@/types';
 import { ACHIEVEMENTS } from '@/data/achievements';
 
@@ -37,7 +39,7 @@ const isConsecutiveDay = (lastDate: string, currentDate: string): boolean => {
 interface ProgressStore extends UserProgress {
   // Initialization
   isInitialized: boolean;
-  setInitialized: (name: string, grade: Grade) => void;
+  setInitialized: (name: string, level: Level) => void;
   resetProgress: () => void;
 
   // XP & Level
@@ -77,11 +79,11 @@ export const useProgressStore = create<ProgressStore>()(
       // Initialization
       // ============================================
 
-      setInitialized: (name: string, grade: Grade) => {
+      setInitialized: (name: string, level: Level) => {
         set({
           isInitialized: true,
           userName: name,
-          grade,
+          level,
           createdAt: new Date().toISOString(),
           stats: {
             ...DEFAULT_STATS,
@@ -389,7 +391,26 @@ export const useProgressStore = create<ProgressStore>()(
     {
       name: 'equest-progress',
       storage: createJSONStorage(() => safeStorage),
-      version: 1,
+      version: 2,
+      migrate: (persistedState: unknown, version: number) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const state = persistedState as any;
+
+        // Migration from version 1 (Grade system) to version 2 (Level system)
+        if (version < 2) {
+          // Convert old 'grade' field to 'level'
+          if ('grade' in state && typeof state.grade === 'number') {
+            const oldGrade = state.grade as Grade;
+            state.level = gradeToLevel(oldGrade);
+            delete state.grade;
+          } else if (!('level' in state)) {
+            state.level = 2; // Default to Level 2 (US 4th Grade)
+          }
+          state.version = 2;
+        }
+
+        return state as unknown as UserProgress;
+      },
     }
   )
 );

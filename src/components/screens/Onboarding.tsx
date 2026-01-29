@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useProgressStore } from '@/store/useProgressStore';
-import { Grade } from '@/types';
+import { Level, LEVEL_INFO } from '@/types';
 import { Button } from '@/components/ui/Button';
 import { Mascot, MascotWithSpeech } from '@/components/ui/Mascot';
 import { ArrowRight, Sparkles, Check } from 'lucide-react';
@@ -11,34 +11,38 @@ interface OnboardingProps {
   onComplete: () => void;
 }
 
-type Step = 'welcome' | 'name' | 'grade' | 'ready';
+type Step = 'welcome' | 'name' | 'level' | 'ready';
 
-const gradeOptions: { grade: Grade; label: string; labelKorean: string; emoji: string }[] = [
-  { grade: 4, label: '4th Grade', labelKorean: '4학년', emoji: '🌟' },
-  { grade: 5, label: '5th Grade', labelKorean: '5학년', emoji: '⭐' },
-  { grade: 6, label: '6th Grade', labelKorean: '6학년', emoji: '🌠' },
-];
+const levelOptions = LEVEL_INFO.map((info) => ({
+  level: info.level,
+  label: `Level ${info.level}: ${info.name}`,
+  labelKorean: `레벨 ${info.level}: ${info.nameKorean}`,
+  description: info.description,
+  descriptionKorean: info.descriptionKorean,
+  emoji: info.emoji,
+  usGrade: info.usGrade,
+}));
 
 export function Onboarding({ onComplete }: OnboardingProps) {
   const { setInitialized } = useProgressStore();
   const [step, setStep] = useState<Step>('welcome');
   const [name, setName] = useState('');
-  const [selectedGrade, setSelectedGrade] = useState<Grade | null>(null);
+  const [selectedLevel, setSelectedLevel] = useState<Level | null>(null);
 
   const handleNameSubmit = () => {
     if (name.trim().length >= 2) {
-      setStep('grade');
+      setStep('level');
     }
   };
 
-  const handleGradeSelect = (grade: Grade) => {
-    setSelectedGrade(grade);
+  const handleLevelSelect = (level: Level) => {
+    setSelectedLevel(level);
     setStep('ready');
   };
 
   const handleComplete = () => {
-    if (name && selectedGrade) {
-      setInitialized(name.trim(), selectedGrade);
+    if (name && selectedLevel) {
+      setInitialized(name.trim(), selectedLevel);
       onComplete();
     }
   };
@@ -185,9 +189,9 @@ export function Onboarding({ onComplete }: OnboardingProps) {
             </motion.div>
           )}
 
-          {step === 'grade' && (
+          {step === 'level' && (
             <motion.div
-              key="grade"
+              key="level"
               variants={slideVariants}
               initial="enter"
               animate="center"
@@ -199,31 +203,31 @@ export function Onboarding({ onComplete }: OnboardingProps) {
               <motion.div
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mb-8"
+                className="mb-6"
               >
                 <Mascot size="md" mood="thinking" />
                 <h2 className="text-2xl font-black text-gray-800 mt-4 mb-1">
                   Hi, {name}! 👋
                 </h2>
                 <p className="text-gray-500">
-                  What grade are you in?
+                  Choose your level
                 </p>
                 <p className="text-gray-400 text-sm">
-                  몇 학년이에요?
+                  레벨을 선택하세요
                 </p>
               </motion.div>
 
-              {/* Grade options */}
-              <div className="space-y-3 mb-6">
-                {gradeOptions.map((option, index) => (
+              {/* Level options */}
+              <div className="space-y-2 mb-6 max-h-[400px] overflow-y-auto">
+                {levelOptions.map((option, index) => (
                   <motion.button
-                    key={option.grade}
+                    key={option.level}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.1 * index }}
-                    onClick={() => handleGradeSelect(option.grade)}
+                    transition={{ delay: 0.05 * index }}
+                    onClick={() => handleLevelSelect(option.level)}
                     className={cn(
-                      'w-full p-4 rounded-2xl bg-white shadow-card',
+                      'w-full p-3 rounded-2xl bg-white shadow-card',
                       'border-2 border-gray-100',
                       'flex items-center justify-between',
                       'transition-all duration-200',
@@ -234,8 +238,9 @@ export function Onboarding({ onComplete }: OnboardingProps) {
                     <div className="flex items-center gap-3">
                       <span className="text-2xl">{option.emoji}</span>
                       <div className="text-left">
-                        <p className="font-bold text-gray-800">{option.label}</p>
-                        <p className="text-sm text-gray-400">{option.labelKorean}</p>
+                        <p className="font-bold text-gray-800 text-sm">{option.label}</p>
+                        <p className="text-xs text-gray-500">{option.description}</p>
+                        <p className="text-xs text-gray-400">US {option.usGrade}</p>
                       </div>
                     </div>
                     <ArrowRight className="w-5 h-5 text-gray-300" />
@@ -292,7 +297,7 @@ export function Onboarding({ onComplete }: OnboardingProps) {
                   <div className="text-left flex-1">
                     <p className="font-bold text-gray-800 text-lg">{name}</p>
                     <p className="text-gray-500">
-                      {gradeOptions.find((g) => g.grade === selectedGrade)?.label}
+                      {levelOptions.find((l) => l.level === selectedLevel)?.label}
                     </p>
                   </div>
                 </div>
@@ -320,14 +325,14 @@ export function Onboarding({ onComplete }: OnboardingProps) {
 
       {/* Step indicator */}
       <div className="flex justify-center gap-2 pb-8">
-        {['welcome', 'name', 'grade', 'ready'].map((s, i) => (
+        {['welcome', 'name', 'level', 'ready'].map((s, i) => (
           <div
             key={s}
             className={cn(
               'w-2 h-2 rounded-full transition-all duration-300',
               step === s
                 ? 'w-6 bg-primary'
-                : ['welcome', 'name', 'grade', 'ready'].indexOf(step) > i
+                : ['welcome', 'name', 'level', 'ready'].indexOf(step) > i
                 ? 'bg-primary/50'
                 : 'bg-gray-200'
             )}

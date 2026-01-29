@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useProgressStore } from '@/store/useProgressStore';
-import { Story, Grade } from '@/types';
+import { Story, Level, LEVEL_INFO } from '@/types';
 import { STORIES } from '@/data/stories';
 import { AnimatedCard } from '@/components/ui/Card';
 import { IconButton } from '@/components/ui/Button';
@@ -34,7 +34,7 @@ const collectionLabels: Record<string, { label: string; emoji: string }> = {
 
 export function StoryList({ onBack, onSelectStory }: StoryListProps) {
   const { stories } = useProgressStore();
-  const [selectedGrade, setSelectedGrade] = useState<Grade | 'all'>('all');
+  const [selectedLevel, setSelectedLevel] = useState<Level | 'all'>('all');
   const [selectedCollection, setSelectedCollection] = useState<string | 'all'>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [showFilters, setShowFilters] = useState(false);
@@ -42,8 +42,8 @@ export function StoryList({ onBack, onSelectStory }: StoryListProps) {
   // Filter stories
   const filteredStories = useMemo(() => {
     return STORIES.filter((story) => {
-      // Grade filter
-      if (selectedGrade !== 'all' && story.difficulty !== selectedGrade) {
+      // Level filter
+      if (selectedLevel !== 'all' && story.level !== selectedLevel) {
         return false;
       }
 
@@ -63,7 +63,7 @@ export function StoryList({ onBack, onSelectStory }: StoryListProps) {
 
       return true;
     });
-  }, [selectedGrade, selectedCollection, searchQuery]);
+  }, [selectedLevel, selectedCollection, searchQuery]);
 
   // Group by collection for display
   const groupedStories = useMemo(() => {
@@ -147,22 +147,33 @@ export function StoryList({ onBack, onSelectStory }: StoryListProps) {
               className="overflow-hidden border-t border-gray-100"
             >
               <div className="px-4 py-3 space-y-3">
-                {/* Grade filter */}
+                {/* Level filter */}
                 <div>
-                  <p className="text-xs font-medium text-gray-500 mb-2">Grade Level</p>
-                  <div className="flex gap-2">
-                    {(['all', 4, 5, 6] as const).map((g) => (
+                  <p className="text-xs font-medium text-gray-500 mb-2">Difficulty Level</p>
+                  <div className="flex gap-2 flex-wrap">
+                    <button
+                      onClick={() => setSelectedLevel('all')}
+                      className={cn(
+                        'px-3 py-1.5 rounded-full text-sm font-medium transition-colors',
+                        selectedLevel === 'all'
+                          ? 'bg-primary text-white'
+                          : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                      )}
+                    >
+                      All
+                    </button>
+                    {LEVEL_INFO.map((info) => (
                       <button
-                        key={g}
-                        onClick={() => setSelectedGrade(g)}
+                        key={info.level}
+                        onClick={() => setSelectedLevel(info.level)}
                         className={cn(
                           'px-3 py-1.5 rounded-full text-sm font-medium transition-colors',
-                          selectedGrade === g
+                          selectedLevel === info.level
                             ? 'bg-primary text-white'
                             : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                         )}
                       >
-                        {g === 'all' ? 'All' : `Grade ${g}`}
+                        {info.emoji} Lv.{info.level}
                       </button>
                     ))}
                   </div>
@@ -275,7 +286,7 @@ export function StoryList({ onBack, onSelectStory }: StoryListProps) {
                             <div className="flex items-center gap-3 mt-2 text-xs text-gray-400">
                               <span className="flex items-center gap-1">
                                 <Star className="w-3 h-3" />
-                                Grade {story.difficulty}
+                                Level {story.level}
                               </span>
                               <span className="flex items-center gap-1">
                                 <Clock className="w-3 h-3" />

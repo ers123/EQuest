@@ -1,7 +1,7 @@
 import { Story } from '@/types';
 import { MORE_AESOP_STORIES } from './aesop-more';
 
-// Aesop's Fables - Grade 4 Level (Simple vocabulary, clear morals)
+// Aesop's Fables - Level 2 (Elementary - US 4th Grade level)
 const AESOP_STORIES: Story[] = [
   {
     id: 'aesop-fox-grapes',
@@ -9,108 +9,57 @@ const AESOP_STORIES: Story[] = [
     titleKorean: '여우와 포도',
     author: 'Aesop',
     collection: 'aesop',
-    difficulty: 4,
-    description: 'A hungry fox tries to reach delicious grapes.',
-    descriptionKorean: '배고픈 여우가 맛있는 포도를 먹으려고 해요.',
-    estimatedMinutes: 5,
-    totalWords: 150,
+    level: 2,
+    description: 'A hungry fox tries to reach delicious grapes but learns an important lesson.',
+    descriptionKorean: '배고픈 여우가 맛있는 포도를 먹으려고 하지만 중요한 교훈을 배워요.',
+    estimatedMinutes: 15,
+    totalWords: 650,
     chapters: [
       {
         id: 'ch1',
         title: 'The Hungry Fox',
         titleKorean: '배고픈 여우',
-        content: `One [[hot]] summer day, a Fox was walking through a [[forest]]. He was very [[hungry]] and looking for something to eat.
+        content: `One [[hot]] summer day, a Fox was walking through a [[forest]]. The sun was shining brightly in the [[sky]], and the Fox was feeling very [[hungry]]. He had been walking for a long time, looking for something good to eat.
 
-As he walked, he saw some [[beautiful]] [[grapes]] hanging high on a vine. The grapes were [[purple]] and looked very [[delicious]].
+The Fox lived in a [[cozy]] den under a big oak tree. Usually, he was very good at finding food. He would catch mice in the [[meadow]], or find [[berries]] near the stream. But today, he had found nothing at all.
 
-"Oh my!" said the Fox. "Those grapes look so [[sweet]] and [[juicy]]! I must have them for my lunch."`,
-        contentKorean: `어느 더운 여름날, 여우 한 마리가 숲을 걷고 있었어요. 그는 매우 배가 고팠고 먹을 것을 찾고 있었어요.
+As he walked deeper into the forest, he came to a sunny [[clearing]]. In the middle of the clearing stood an old wooden [[fence]]. And growing along that fence was a [[beautiful]] [[grape]] vine!
 
-걸어가다가, 그는 덩굴 높은 곳에 매달린 아름다운 포도를 보았어요. 포도는 보라색이었고 매우 맛있어 보였어요.
+The grapes were [[purple]] and looked very [[delicious]]. They hung in big bunches from the vine. The Fox could see drops of [[juice]] on the grapes, shining in the sunlight.
 
-"오 이런!" 여우가 말했어요. "저 포도들은 정말 달콤하고 즙이 많아 보여! 점심으로 먹어야겠어."`,
+"Oh my!" said the Fox, his eyes growing wide with [[excitement]]. "Those grapes look so [[sweet]] and [[juicy]]! They are the most beautiful grapes I have ever seen! I must have them for my lunch."
+
+The Fox licked his lips and walked closer to the vine. The [[smell]] of the grapes was wonderful. It made his stomach growl with hunger even more.`,
+        contentKorean: `어느 더운 여름날, 여우 한 마리가 숲을 걷고 있었어요. 태양이 하늘에서 밝게 빛나고 있었고, 여우는 매우 배가 고팠어요. 그는 오랫동안 걸으며 먹을 것을 찾고 있었어요.
+
+여우는 큰 참나무 아래의 아늑한 굴에서 살았어요. 보통 그는 음식을 찾는 것을 매우 잘했어요. 초원에서 생쥐를 잡거나 시냇가 근처에서 베리를 찾곤 했죠. 하지만 오늘은 아무것도 찾지 못했어요.
+
+숲 깊은 곳으로 걸어가다가, 그는 햇볕이 드는 빈터에 도착했어요. 빈터 한가운데에 오래된 나무 울타리가 서 있었어요. 그리고 그 울타리를 따라 아름다운 포도 덩굴이 자라고 있었어요!
+
+포도는 보라색이었고 매우 맛있어 보였어요. 큰 송이로 덩굴에 매달려 있었어요. 여우는 햇빛에 반짝이는 포도 즙 방울들을 볼 수 있었어요.
+
+"오 이런!" 여우가 흥분으로 눈을 크게 뜨며 말했어요. "저 포도들은 정말 달콤하고 즙이 많아 보여! 내가 본 것 중 가장 아름다운 포도야! 점심으로 먹어야겠어."
+
+여우는 입술을 핥으며 덩굴 가까이 다가갔어요. 포도 냄새가 정말 좋았어요. 그 냄새 때문에 배가 더 고파졌어요.`,
         vocabulary: [
-          {
-            word: 'hot',
-            pronunciation: '/hɑːt/',
-            meaning: '더운',
-            example: 'It is a hot summer day.',
-            exampleKorean: '더운 여름날이에요.',
-            grade: 4,
-            topic: 'weather',
-          },
-          {
-            word: 'forest',
-            pronunciation: '/ˈfɔːrɪst/',
-            meaning: '숲',
-            example: 'The fox lives in the forest.',
-            exampleKorean: '여우는 숲에 살아요.',
-            grade: 4,
-            topic: 'nature',
-          },
-          {
-            word: 'hungry',
-            pronunciation: '/ˈhʌŋɡri/',
-            meaning: '배고픈',
-            example: 'I am hungry.',
-            exampleKorean: '나는 배고파요.',
-            grade: 4,
-            topic: 'emotions',
-          },
-          {
-            word: 'beautiful',
-            pronunciation: '/ˈbjuːtɪfl/',
-            meaning: '아름다운',
-            example: 'The flowers are beautiful.',
-            exampleKorean: '꽃들이 아름다워요.',
-            grade: 4,
-            topic: 'emotions',
-          },
-          {
-            word: 'grapes',
-            pronunciation: '/ɡreɪps/',
-            meaning: '포도',
-            example: 'I like grapes.',
-            exampleKorean: '나는 포도를 좋아해요.',
-            grade: 4,
-            topic: 'food',
-          },
-          {
-            word: 'purple',
-            pronunciation: '/ˈpɜːrpl/',
-            meaning: '보라색의',
-            example: 'The grapes are purple.',
-            exampleKorean: '포도는 보라색이에요.',
-            grade: 4,
-            topic: 'colors',
-          },
-          {
-            word: 'delicious',
-            pronunciation: '/dɪˈlɪʃəs/',
-            meaning: '맛있는',
-            example: 'This food is delicious.',
-            exampleKorean: '이 음식은 맛있어요.',
-            grade: 4,
-            topic: 'food',
-          },
-          {
-            word: 'sweet',
-            pronunciation: '/swiːt/',
-            meaning: '달콤한',
-            example: 'Candy is sweet.',
-            exampleKorean: '사탕은 달콤해요.',
-            grade: 4,
-            topic: 'food',
-          },
-          {
-            word: 'juicy',
-            pronunciation: '/ˈdʒuːsi/',
-            meaning: '즙이 많은',
-            example: 'Oranges are juicy.',
-            exampleKorean: '오렌지는 즙이 많아요.',
-            grade: 4,
-            topic: 'food',
-          },
+          { word: 'hot', pronunciation: '/hɑːt/', meaning: '더운', example: 'It is a hot summer day.', exampleKorean: '더운 여름날이에요.', level: 2, topic: 'weather' },
+          { word: 'forest', pronunciation: '/ˈfɔːrɪst/', meaning: '숲', example: 'The fox lives in the forest.', exampleKorean: '여우는 숲에 살아요.', level: 2, topic: 'nature' },
+          { word: 'sky', pronunciation: '/skaɪ/', meaning: '하늘', example: 'The sky is blue today.', exampleKorean: '오늘 하늘이 파랗네요.', level: 2, topic: 'nature' },
+          { word: 'hungry', pronunciation: '/ˈhʌŋɡri/', meaning: '배고픈', example: 'I am hungry.', exampleKorean: '나는 배고파요.', level: 2, topic: 'emotions' },
+          { word: 'cozy', pronunciation: '/ˈkoʊzi/', meaning: '아늑한', example: 'This room is cozy.', exampleKorean: '이 방은 아늑해요.', level: 2, topic: 'emotions' },
+          { word: 'meadow', pronunciation: '/ˈmedoʊ/', meaning: '초원', example: 'Flowers grow in the meadow.', exampleKorean: '초원에 꽃이 자라요.', level: 2, topic: 'nature' },
+          { word: 'berries', pronunciation: '/ˈberiz/', meaning: '베리', example: 'I love to eat berries.', exampleKorean: '나는 베리 먹는 것을 좋아해요.', level: 2, topic: 'food' },
+          { word: 'clearing', pronunciation: '/ˈklɪrɪŋ/', meaning: '빈터', example: 'They picnicked in a clearing.', exampleKorean: '그들은 빈터에서 소풍했어요.', level: 3, topic: 'nature' },
+          { word: 'fence', pronunciation: '/fens/', meaning: '울타리', example: 'The fence is made of wood.', exampleKorean: '울타리는 나무로 만들어졌어요.', level: 2, topic: 'places' },
+          { word: 'beautiful', pronunciation: '/ˈbjuːtɪfl/', meaning: '아름다운', example: 'The flowers are beautiful.', exampleKorean: '꽃들이 아름다워요.', level: 2, topic: 'emotions' },
+          { word: 'grape', pronunciation: '/ɡreɪp/', meaning: '포도', example: 'I like grapes.', exampleKorean: '나는 포도를 좋아해요.', level: 2, topic: 'food' },
+          { word: 'purple', pronunciation: '/ˈpɜːrpl/', meaning: '보라색의', example: 'The grapes are purple.', exampleKorean: '포도는 보라색이에요.', level: 2, topic: 'colors' },
+          { word: 'delicious', pronunciation: '/dɪˈlɪʃəs/', meaning: '맛있는', example: 'This food is delicious.', exampleKorean: '이 음식은 맛있어요.', level: 2, topic: 'food' },
+          { word: 'juice', pronunciation: '/dʒuːs/', meaning: '즙, 주스', example: 'I drink orange juice.', exampleKorean: '나는 오렌지 주스를 마셔요.', level: 2, topic: 'food' },
+          { word: 'excitement', pronunciation: '/ɪkˈsaɪtmənt/', meaning: '흥분', example: 'She was full of excitement.', exampleKorean: '그녀는 흥분으로 가득 찼어요.', level: 3, topic: 'emotions' },
+          { word: 'sweet', pronunciation: '/swiːt/', meaning: '달콤한', example: 'Candy is sweet.', exampleKorean: '사탕은 달콤해요.', level: 2, topic: 'food' },
+          { word: 'juicy', pronunciation: '/ˈdʒuːsi/', meaning: '즙이 많은', example: 'Oranges are juicy.', exampleKorean: '오렌지는 즙이 많아요.', level: 2, topic: 'food' },
+          { word: 'smell', pronunciation: '/smel/', meaning: '냄새', example: 'The smell of flowers is nice.', exampleKorean: '꽃 냄새가 좋아요.', level: 2, topic: 'nature' },
         ],
         quiz: [
           {
@@ -139,93 +88,54 @@ As he walked, he saw some [[beautiful]] [[grapes]] hanging high on a vine. The g
         id: 'ch2',
         title: 'Trying to Reach',
         titleKorean: '닿으려고 노력하다',
-        content: `The Fox [[jumped]] as high as he could. But the grapes were too [[high]]. He could not [[reach]] them.
+        content: `The Fox looked up at the grapes. They were hanging very [[high]] on the vine. "No problem," thought the Fox. "I am a [[clever]] fox. I can [[reach]] them easily."
 
-He [[tried]] again and again. He jumped and jumped. But every [[time]], he [[failed]].
+The Fox [[jumped]] as high as he could. He [[stretched]] his legs and reached out his paws. But the grapes were too high! He could not [[touch]] them at all.
 
-"I will try one more time," said the Fox. He took a few steps back. Then he [[ran]] fast and jumped with all his [[strength]].
+"Hmm," said the Fox. "Let me try again." He [[stepped]] back and took a [[deep]] breath. Then he jumped with more [[energy]]. But still, he [[failed]] to reach the grapes.
 
-Still, he could not reach the grapes.`,
-        contentKorean: `여우는 최대한 높이 점프했어요. 하지만 포도는 너무 높았어요. 그는 닿을 수 없었어요.
+The Fox was [[determined]]. He would not give up! He [[tried]] many different ways to reach the grapes. He jumped from the left. He jumped from the right. He tried to [[climb]] the fence, but it was too old and [[weak]].
 
-그는 계속 시도했어요. 점프하고 또 점프했어요. 하지만 매번 실패했어요.
+"I will try one more [[time]]," said the Fox, panting heavily. His legs were getting [[tired]]. He walked back many steps. Then he [[ran]] as fast as he could and jumped with all his [[strength]].
 
-"한 번만 더 해볼게," 여우가 말했어요. 그는 몇 걸음 뒤로 물러났어요. 그리고 빠르게 달려가서 온 힘을 다해 점프했어요.
+His paw almost touched the [[lowest]] bunch of grapes! But almost was not [[enough]]. He fell back down to the ground with a loud thump.
 
-그래도 포도에 닿을 수 없었어요.`,
+The grapes [[remained]] hanging peacefully on the vine, far out of the Fox's reach.`,
+        contentKorean: `여우는 포도를 올려다봤어요. 포도는 덩굴 아주 높은 곳에 매달려 있었어요. "문제없어," 여우가 생각했어요. "나는 똑똑한 여우야. 쉽게 닿을 수 있어."
+
+여우는 최대한 높이 점프했어요. 다리를 쭉 뻗고 발을 뻗었어요. 하지만 포도는 너무 높았어요! 전혀 닿을 수가 없었어요.
+
+"흠," 여우가 말했어요. "다시 해볼게." 그는 뒤로 물러나서 깊은 숨을 쉬었어요. 그리고 더 많은 에너지를 담아 점프했어요. 하지만 여전히 포도에 닿지 못했어요.
+
+여우는 결심했어요. 포기하지 않을 거예요! 그는 포도에 닿으려고 여러 가지 방법을 시도했어요. 왼쪽에서 점프했어요. 오른쪽에서 점프했어요. 울타리를 타고 오르려고 했지만, 너무 오래되고 약했어요.
+
+"한 번만 더 해볼게," 여우가 헐떡이며 말했어요. 다리가 피곤해지고 있었어요. 그는 여러 걸음 뒤로 물러났어요. 그리고 최대한 빠르게 달려가서 온 힘을 다해 점프했어요.
+
+발이 가장 낮은 포도 송이에 거의 닿았어요! 하지만 거의는 충분하지 않았어요. 그는 쿵 소리를 내며 땅으로 다시 떨어졌어요.
+
+포도는 여우의 손이 닿지 않는 곳에서 평화롭게 매달려 있었어요.`,
         vocabulary: [
-          {
-            word: 'jumped',
-            pronunciation: '/dʒʌmpt/',
-            meaning: '점프했다',
-            example: 'The frog jumped into the pond.',
-            exampleKorean: '개구리가 연못으로 점프했어요.',
-            grade: 4,
-            topic: 'actions',
-          },
-          {
-            word: 'high',
-            pronunciation: '/haɪ/',
-            meaning: '높은',
-            example: 'The mountain is very high.',
-            exampleKorean: '그 산은 매우 높아요.',
-            grade: 4,
-            topic: 'nature',
-          },
-          {
-            word: 'reach',
-            pronunciation: '/riːtʃ/',
-            meaning: '닿다, 도달하다',
-            example: 'I cannot reach the top shelf.',
-            exampleKorean: '나는 맨 위 선반에 닿을 수 없어요.',
-            grade: 4,
-            topic: 'actions',
-          },
-          {
-            word: 'tried',
-            pronunciation: '/traɪd/',
-            meaning: '시도했다',
-            example: 'She tried to solve the problem.',
-            exampleKorean: '그녀는 문제를 풀려고 시도했어요.',
-            grade: 4,
-            topic: 'actions',
-          },
-          {
-            word: 'time',
-            pronunciation: '/taɪm/',
-            meaning: '시간, 번',
-            example: 'What time is it?',
-            exampleKorean: '몇 시예요?',
-            grade: 4,
-            topic: 'time',
-          },
-          {
-            word: 'failed',
-            pronunciation: '/feɪld/',
-            meaning: '실패했다',
-            example: 'He failed the test.',
-            exampleKorean: '그는 시험에 떨어졌어요.',
-            grade: 4,
-            topic: 'actions',
-          },
-          {
-            word: 'ran',
-            pronunciation: '/ræn/',
-            meaning: '달렸다',
-            example: 'The dog ran in the park.',
-            exampleKorean: '개가 공원에서 달렸어요.',
-            grade: 4,
-            topic: 'actions',
-          },
-          {
-            word: 'strength',
-            pronunciation: '/streŋθ/',
-            meaning: '힘',
-            example: 'He has great strength.',
-            exampleKorean: '그는 큰 힘을 가지고 있어요.',
-            grade: 4,
-            topic: 'body',
-          },
+          { word: 'high', pronunciation: '/haɪ/', meaning: '높은', example: 'The mountain is very high.', exampleKorean: '그 산은 매우 높아요.', level: 2, topic: 'nature' },
+          { word: 'clever', pronunciation: '/ˈklevər/', meaning: '똑똑한', example: 'She is a clever girl.', exampleKorean: '그녀는 똑똑한 소녀예요.', level: 2, topic: 'emotions' },
+          { word: 'reach', pronunciation: '/riːtʃ/', meaning: '닿다, 도달하다', example: 'I cannot reach the top shelf.', exampleKorean: '나는 맨 위 선반에 닿을 수 없어요.', level: 2, topic: 'actions' },
+          { word: 'jumped', pronunciation: '/dʒʌmpt/', meaning: '점프했다', example: 'The frog jumped into the pond.', exampleKorean: '개구리가 연못으로 점프했어요.', level: 2, topic: 'actions' },
+          { word: 'stretched', pronunciation: '/stretʃt/', meaning: '뻗었다', example: 'She stretched her arms.', exampleKorean: '그녀는 팔을 뻗었어요.', level: 2, topic: 'actions' },
+          { word: 'touch', pronunciation: '/tʌtʃ/', meaning: '닿다, 만지다', example: 'Don\'t touch the hot stove!', exampleKorean: '뜨거운 스토브를 만지지 마!', level: 2, topic: 'actions' },
+          { word: 'stepped', pronunciation: '/stept/', meaning: '걸음을 옮겼다', example: 'He stepped forward.', exampleKorean: '그는 앞으로 걸어갔어요.', level: 2, topic: 'actions' },
+          { word: 'deep', pronunciation: '/diːp/', meaning: '깊은', example: 'Take a deep breath.', exampleKorean: '깊은 숨을 쉬세요.', level: 2, topic: 'nature' },
+          { word: 'energy', pronunciation: '/ˈenərdʒi/', meaning: '에너지, 힘', example: 'I have lots of energy today.', exampleKorean: '오늘 에너지가 넘쳐요.', level: 3, topic: 'body' },
+          { word: 'failed', pronunciation: '/feɪld/', meaning: '실패했다', example: 'He failed the test.', exampleKorean: '그는 시험에 떨어졌어요.', level: 2, topic: 'actions' },
+          { word: 'determined', pronunciation: '/dɪˈtɜːrmɪnd/', meaning: '결심한', example: 'She is determined to win.', exampleKorean: '그녀는 이기기로 결심했어요.', level: 3, topic: 'emotions' },
+          { word: 'tried', pronunciation: '/traɪd/', meaning: '시도했다', example: 'She tried to solve the problem.', exampleKorean: '그녀는 문제를 풀려고 시도했어요.', level: 2, topic: 'actions' },
+          { word: 'climb', pronunciation: '/klaɪm/', meaning: '오르다', example: 'Monkeys climb trees.', exampleKorean: '원숭이는 나무를 올라요.', level: 2, topic: 'actions' },
+          { word: 'weak', pronunciation: '/wiːk/', meaning: '약한', example: 'The rope is too weak.', exampleKorean: '그 밧줄은 너무 약해요.', level: 2, topic: 'body' },
+          { word: 'time', pronunciation: '/taɪm/', meaning: '시간, 번', example: 'What time is it?', exampleKorean: '몇 시예요?', level: 2, topic: 'time' },
+          { word: 'tired', pronunciation: '/ˈtaɪərd/', meaning: '피곤한', example: 'I am tired after running.', exampleKorean: '달리고 나서 피곤해요.', level: 2, topic: 'emotions' },
+          { word: 'ran', pronunciation: '/ræn/', meaning: '달렸다', example: 'The dog ran in the park.', exampleKorean: '개가 공원에서 달렸어요.', level: 2, topic: 'actions' },
+          { word: 'strength', pronunciation: '/streŋθ/', meaning: '힘', example: 'He has great strength.', exampleKorean: '그는 큰 힘을 가지고 있어요.', level: 2, topic: 'body' },
+          { word: 'lowest', pronunciation: '/ˈloʊɪst/', meaning: '가장 낮은', example: 'This is the lowest price.', exampleKorean: '이것이 가장 낮은 가격이에요.', level: 2, topic: 'numbers' },
+          { word: 'enough', pronunciation: '/ɪˈnʌf/', meaning: '충분한', example: 'That is enough.', exampleKorean: '그것은 충분해요.', level: 2, topic: 'numbers' },
+          { word: 'remained', pronunciation: '/rɪˈmeɪnd/', meaning: '남아 있었다', example: 'He remained calm.', exampleKorean: '그는 침착함을 유지했어요.', level: 3, topic: 'actions' },
         ],
         quiz: [
           {
@@ -259,84 +169,64 @@ Still, he could not reach the grapes.`,
         id: 'ch3',
         title: 'The Moral',
         titleKorean: '교훈',
-        content: `The Fox was very [[tired]] now. He sat down and looked at the grapes one more time.
+        content: `The Fox was very [[tired]] now. His legs [[hurt]], and his body [[ached]] from all the jumping. He sat down under a [[shady]] tree and looked at the grapes one more time.
 
-"Those grapes are probably [[sour]] anyway," said the Fox. "I don't [[want]] them anymore."
+The grapes still looked [[beautiful]] and delicious. They [[sparkled]] in the afternoon sunlight. The Fox's stomach growled [[loudly]].
 
-Then the Fox [[walked]] away, [[pretending]] he didn't care.
+But then something [[changed]] in the Fox's [[mind]]. He didn't want to [[admit]] that he couldn't get the grapes. That would be too [[embarrassing]]!
 
-**Moral of the story:** It is [[easy]] to [[hate]] what you cannot have.`,
-        contentKorean: `여우는 이제 매우 피곤했어요. 그는 앉아서 포도를 한 번 더 바라보았어요.
+"Hmph," said the Fox, lifting his nose up into the air. "I didn't really [[want]] those grapes [[anyway]]. I just [[realized]] something. Those grapes are probably [[sour]]! Yes, that's right. Sour and [[terrible]]!"
 
-"어차피 저 포도는 아마 신 맛일 거야," 여우가 말했어요. "더 이상 원하지 않아."
+The Fox stood up and [[brushed]] the dust off his fur. "I am a [[smart]] fox," he told himself. "Why would I want sour grapes? Only a [[foolish]] animal would want those nasty grapes."
 
-그리고 여우는 신경 쓰지 않는 척하며 걸어갔어요.
+Then the Fox [[walked]] away, [[pretending]] he didn't care at all. But deep down in his heart, he [[knew]] the truth. He had wanted those grapes very much. He was just too [[proud]] to say so.
 
-**이야기의 교훈:** 가질 수 없는 것을 싫어하기는 쉬워요.`,
+A [[wise]] old owl was watching from a nearby tree. She shook her head slowly.
+
+**Moral of the story:** It is [[easy]] to [[hate]] what you cannot have. Sometimes we say bad things about the things we cannot get. We should be [[honest]] with ourselves instead.`,
+        contentKorean: `여우는 이제 매우 피곤했어요. 다리가 아팠고, 온 몸이 점프 때문에 쑤셨어요. 그는 그늘진 나무 아래 앉아서 포도를 한 번 더 바라보았어요.
+
+포도는 여전히 아름답고 맛있어 보였어요. 오후 햇살에 반짝이고 있었어요. 여우의 배가 크게 꼬르륵 소리를 냈어요.
+
+하지만 그때 여우의 마음에 변화가 생겼어요. 그는 포도를 얻을 수 없다는 것을 인정하고 싶지 않았어요. 그건 너무 창피한 일이니까요!
+
+"흥," 여우가 코를 위로 치켜들며 말했어요. "나는 정말로 저 포도를 원하지 않았어. 방금 깨달았어. 저 포도는 아마 신 맛일 거야! 그래, 맞아. 시고 맛없을 거야!"
+
+여우는 일어나서 털에 묻은 먼지를 털었어요. "나는 똑똑한 여우야," 그가 스스로에게 말했어요. "왜 신 포도를 원하겠어? 어리석은 동물만 저 끔찍한 포도를 원할 거야."
+
+그리고 여우는 전혀 신경 쓰지 않는 척하며 걸어갔어요. 하지만 마음 깊은 곳에서는 진실을 알고 있었어요. 그는 정말로 그 포도를 원했어요. 그냥 그렇게 말하기엔 너무 자존심이 상했을 뿐이에요.
+
+현명한 늙은 부엉이가 가까운 나무에서 지켜보고 있었어요. 부엉이는 천천히 고개를 저었어요.
+
+**이야기의 교훈:** 가질 수 없는 것을 싫어하기는 쉬워요. 때때로 우리는 얻을 수 없는 것에 대해 나쁜 말을 해요. 대신 우리 자신에게 정직해야 해요.`,
         vocabulary: [
-          {
-            word: 'tired',
-            pronunciation: '/ˈtaɪərd/',
-            meaning: '피곤한',
-            example: 'I am tired after running.',
-            exampleKorean: '달리고 나서 피곤해요.',
-            grade: 4,
-            topic: 'emotions',
-          },
-          {
-            word: 'sour',
-            pronunciation: '/ˈsaʊər/',
-            meaning: '신',
-            example: 'Lemons taste sour.',
-            exampleKorean: '레몬은 신 맛이 나요.',
-            grade: 4,
-            topic: 'food',
-          },
-          {
-            word: 'want',
-            pronunciation: '/wɑːnt/',
-            meaning: '원하다',
-            example: 'I want some water.',
-            exampleKorean: '물을 좀 원해요.',
-            grade: 4,
-            topic: 'emotions',
-          },
-          {
-            word: 'walked',
-            pronunciation: '/wɔːkt/',
-            meaning: '걸었다',
-            example: 'She walked to school.',
-            exampleKorean: '그녀는 학교까지 걸어갔어요.',
-            grade: 4,
-            topic: 'actions',
-          },
-          {
-            word: 'pretending',
-            pronunciation: '/prɪˈtendɪŋ/',
-            meaning: '~인 척하는',
-            example: 'He is pretending to sleep.',
-            exampleKorean: '그는 자는 척하고 있어요.',
-            grade: 4,
-            topic: 'actions',
-          },
-          {
-            word: 'easy',
-            pronunciation: '/ˈiːzi/',
-            meaning: '쉬운',
-            example: 'This question is easy.',
-            exampleKorean: '이 문제는 쉬워요.',
-            grade: 4,
-            topic: 'school',
-          },
-          {
-            word: 'hate',
-            pronunciation: '/heɪt/',
-            meaning: '싫어하다',
-            example: 'I hate cold weather.',
-            exampleKorean: '나는 추운 날씨가 싫어요.',
-            grade: 4,
-            topic: 'emotions',
-          },
+          { word: 'tired', pronunciation: '/ˈtaɪərd/', meaning: '피곤한', example: 'I am tired after running.', exampleKorean: '달리고 나서 피곤해요.', level: 2, topic: 'emotions' },
+          { word: 'hurt', pronunciation: '/hɜːrt/', meaning: '아프다', example: 'My head hurts.', exampleKorean: '머리가 아파요.', level: 2, topic: 'body' },
+          { word: 'ached', pronunciation: '/eɪkt/', meaning: '쑤시다', example: 'My legs ached after the long walk.', exampleKorean: '오래 걸어서 다리가 쑤셨어요.', level: 3, topic: 'body' },
+          { word: 'shady', pronunciation: '/ˈʃeɪdi/', meaning: '그늘진', example: 'Let\'s sit under that shady tree.', exampleKorean: '저 그늘진 나무 아래에 앉자.', level: 2, topic: 'nature' },
+          { word: 'beautiful', pronunciation: '/ˈbjuːtɪfl/', meaning: '아름다운', example: 'The sunset is beautiful.', exampleKorean: '석양이 아름다워요.', level: 2, topic: 'emotions' },
+          { word: 'sparkled', pronunciation: '/ˈspɑːrkld/', meaning: '반짝였다', example: 'The diamonds sparkled.', exampleKorean: '다이아몬드가 반짝였어요.', level: 3, topic: 'nature' },
+          { word: 'loudly', pronunciation: '/ˈlaʊdli/', meaning: '크게', example: 'She laughed loudly.', exampleKorean: '그녀는 크게 웃었어요.', level: 2, topic: 'actions' },
+          { word: 'changed', pronunciation: '/tʃeɪndʒd/', meaning: '변했다', example: 'The weather changed.', exampleKorean: '날씨가 변했어요.', level: 2, topic: 'actions' },
+          { word: 'mind', pronunciation: '/maɪnd/', meaning: '마음, 생각', example: 'I changed my mind.', exampleKorean: '마음이 바뀌었어요.', level: 2, topic: 'emotions' },
+          { word: 'admit', pronunciation: '/ədˈmɪt/', meaning: '인정하다', example: 'I admit I was wrong.', exampleKorean: '내가 틀렸다고 인정해요.', level: 3, topic: 'actions' },
+          { word: 'embarrassing', pronunciation: '/ɪmˈbærəsɪŋ/', meaning: '창피한', example: 'That was embarrassing.', exampleKorean: '그건 창피했어요.', level: 3, topic: 'emotions' },
+          { word: 'want', pronunciation: '/wɑːnt/', meaning: '원하다', example: 'I want some water.', exampleKorean: '물을 좀 원해요.', level: 2, topic: 'emotions' },
+          { word: 'anyway', pronunciation: '/ˈeniweɪ/', meaning: '어쨌든', example: 'Let\'s go anyway.', exampleKorean: '어쨌든 가자.', level: 2, topic: 'time' },
+          { word: 'realized', pronunciation: '/ˈriːəlaɪzd/', meaning: '깨달았다', example: 'I realized my mistake.', exampleKorean: '내 실수를 깨달았어요.', level: 3, topic: 'emotions' },
+          { word: 'sour', pronunciation: '/ˈsaʊər/', meaning: '신', example: 'Lemons taste sour.', exampleKorean: '레몬은 신 맛이 나요.', level: 2, topic: 'food' },
+          { word: 'terrible', pronunciation: '/ˈterəbl/', meaning: '끔찍한', example: 'The weather is terrible.', exampleKorean: '날씨가 끔찍해요.', level: 2, topic: 'emotions' },
+          { word: 'brushed', pronunciation: '/brʌʃt/', meaning: '털었다', example: 'She brushed her hair.', exampleKorean: '그녀는 머리를 빗었어요.', level: 2, topic: 'actions' },
+          { word: 'smart', pronunciation: '/smɑːrt/', meaning: '똑똑한', example: 'He is a smart boy.', exampleKorean: '그는 똑똑한 소년이에요.', level: 2, topic: 'emotions' },
+          { word: 'foolish', pronunciation: '/ˈfuːlɪʃ/', meaning: '어리석은', example: 'That was a foolish mistake.', exampleKorean: '그건 어리석은 실수였어요.', level: 3, topic: 'emotions' },
+          { word: 'walked', pronunciation: '/wɔːkt/', meaning: '걸었다', example: 'She walked to school.', exampleKorean: '그녀는 학교까지 걸어갔어요.', level: 2, topic: 'actions' },
+          { word: 'pretending', pronunciation: '/prɪˈtendɪŋ/', meaning: '~인 척하는', example: 'He is pretending to sleep.', exampleKorean: '그는 자는 척하고 있어요.', level: 2, topic: 'actions' },
+          { word: 'knew', pronunciation: '/nuː/', meaning: '알았다', example: 'I knew the answer.', exampleKorean: '나는 답을 알았어요.', level: 2, topic: 'actions' },
+          { word: 'proud', pronunciation: '/praʊd/', meaning: '자존심 센', example: 'He is too proud to ask for help.', exampleKorean: '그는 도움을 요청하기엔 너무 자존심이 세요.', level: 2, topic: 'emotions' },
+          { word: 'wise', pronunciation: '/waɪz/', meaning: '현명한', example: 'The owl is wise.', exampleKorean: '부엉이는 현명해요.', level: 2, topic: 'emotions' },
+          { word: 'easy', pronunciation: '/ˈiːzi/', meaning: '쉬운', example: 'This question is easy.', exampleKorean: '이 문제는 쉬워요.', level: 2, topic: 'school' },
+          { word: 'hate', pronunciation: '/heɪt/', meaning: '싫어하다', example: 'I hate cold weather.', exampleKorean: '나는 추운 날씨가 싫어요.', level: 2, topic: 'emotions' },
+          { word: 'honest', pronunciation: '/ˈɑːnɪst/', meaning: '정직한', example: 'Always be honest.', exampleKorean: '항상 정직하세요.', level: 2, topic: 'emotions' },
         ],
         quiz: [
           {
@@ -379,7 +269,7 @@ Then the Fox [[walked]] away, [[pretending]] he didn't care.
     titleKorean: '거북이와 토끼',
     author: 'Aesop',
     collection: 'aesop',
-    difficulty: 4,
+    level: 2,
     description: 'A slow tortoise races a fast hare.',
     descriptionKorean: '느린 거북이가 빠른 토끼와 경주해요.',
     estimatedMinutes: 6,
@@ -410,7 +300,7 @@ All the animals [[laughed]]. "You? Race the Hare? That's [[impossible]]!"`,
             meaning: '자랑스러운',
             example: 'I am proud of my work.',
             exampleKorean: '나는 내 작품이 자랑스러워요.',
-            grade: 4,
+            level: 2,
             topic: 'emotions',
           },
           {
@@ -419,7 +309,7 @@ All the animals [[laughed]]. "You? Race the Hare? That's [[impossible]]!"`,
             meaning: '빠른',
             example: 'The car is very fast.',
             exampleKorean: '그 차는 매우 빨라요.',
-            grade: 4,
+            level: 2,
             topic: 'actions',
           },
           {
@@ -428,7 +318,7 @@ All the animals [[laughed]]. "You? Race the Hare? That's [[impossible]]!"`,
             meaning: '가장 빠른',
             example: 'She is the fastest runner.',
             exampleKorean: '그녀는 가장 빠른 주자예요.',
-            grade: 4,
+            level: 2,
             topic: 'actions',
           },
           {
@@ -437,7 +327,7 @@ All the animals [[laughed]]. "You? Race the Hare? That's [[impossible]]!"`,
             meaning: '숲',
             example: 'Animals live in the forest.',
             exampleKorean: '동물들이 숲에 살아요.',
-            grade: 4,
+            level: 2,
             topic: 'nature',
           },
           {
@@ -446,7 +336,7 @@ All the animals [[laughed]]. "You? Race the Hare? That's [[impossible]]!"`,
             meaning: '경주',
             example: 'Let\'s have a race!',
             exampleKorean: '경주하자!',
-            grade: 4,
+            level: 2,
             topic: 'sports',
           },
           {
@@ -455,7 +345,7 @@ All the animals [[laughed]]. "You? Race the Hare? That's [[impossible]]!"`,
             meaning: '느린',
             example: 'The turtle is slow.',
             exampleKorean: '거북이는 느려요.',
-            grade: 4,
+            level: 2,
             topic: 'actions',
           },
           {
@@ -464,7 +354,7 @@ All the animals [[laughed]]. "You? Race the Hare? That's [[impossible]]!"`,
             meaning: '조용히',
             example: 'Please speak quietly.',
             exampleKorean: '조용히 말해 주세요.',
-            grade: 4,
+            level: 2,
             topic: 'actions',
           },
           {
@@ -473,7 +363,7 @@ All the animals [[laughed]]. "You? Race the Hare? That's [[impossible]]!"`,
             meaning: '웃었다',
             example: 'Everyone laughed at the joke.',
             exampleKorean: '모두가 농담에 웃었어요.',
-            grade: 4,
+            level: 2,
             topic: 'emotions',
           },
           {
@@ -482,7 +372,7 @@ All the animals [[laughed]]. "You? Race the Hare? That's [[impossible]]!"`,
             meaning: '불가능한',
             example: 'Nothing is impossible.',
             exampleKorean: '불가능한 것은 없어요.',
-            grade: 4,
+            level: 2,
             topic: 'school',
           },
         ],
@@ -538,7 +428,7 @@ The Hare lay down and soon fell [[asleep]].`,
             meaning: '시작되었다',
             example: 'The movie began at 7 pm.',
             exampleKorean: '영화가 저녁 7시에 시작되었어요.',
-            grade: 4,
+            level: 2,
             topic: 'actions',
           },
           {
@@ -547,7 +437,7 @@ The Hare lay down and soon fell [[asleep]].`,
             meaning: '달렸다',
             example: 'He ran to school.',
             exampleKorean: '그는 학교까지 달렸어요.',
-            grade: 4,
+            level: 2,
             topic: 'actions',
           },
           {
@@ -556,7 +446,7 @@ The Hare lay down and soon fell [[asleep]].`,
             meaning: '앞에',
             example: 'Go straight ahead.',
             exampleKorean: '앞으로 직진하세요.',
-            grade: 4,
+            level: 2,
             topic: 'places',
           },
           {
@@ -565,7 +455,7 @@ The Hare lay down and soon fell [[asleep]].`,
             meaning: '초',
             example: 'Wait a few seconds.',
             exampleKorean: '몇 초만 기다려요.',
-            grade: 4,
+            level: 2,
             topic: 'time',
           },
           {
@@ -574,7 +464,7 @@ The Hare lay down and soon fell [[asleep]].`,
             meaning: '쉬운',
             example: 'The test was easy.',
             exampleKorean: '시험은 쉬웠어요.',
-            grade: 4,
+            level: 2,
             topic: 'school',
           },
           {
@@ -583,7 +473,7 @@ The Hare lay down and soon fell [[asleep]].`,
             meaning: '뒤',
             example: 'Look back!',
             exampleKorean: '뒤를 봐!',
-            grade: 4,
+            level: 2,
             topic: 'places',
           },
           {
@@ -592,7 +482,7 @@ The Hare lay down and soon fell [[asleep]].`,
             meaning: '뒤에',
             example: 'The cat is behind the sofa.',
             exampleKorean: '고양이가 소파 뒤에 있어요.',
-            grade: 4,
+            level: 2,
             topic: 'places',
           },
           {
@@ -601,7 +491,7 @@ The Hare lay down and soon fell [[asleep]].`,
             meaning: '낮잠',
             example: 'I took a nap.',
             exampleKorean: '나는 낮잠을 잤어요.',
-            grade: 4,
+            level: 2,
             topic: 'actions',
           },
           {
@@ -610,7 +500,7 @@ The Hare lay down and soon fell [[asleep]].`,
             meaning: '나무',
             example: 'Birds live in trees.',
             exampleKorean: '새들은 나무에 살아요.',
-            grade: 4,
+            level: 2,
             topic: 'nature',
           },
           {
@@ -619,7 +509,7 @@ The Hare lay down and soon fell [[asleep]].`,
             meaning: '잠든',
             example: 'The baby fell asleep.',
             exampleKorean: '아기가 잠들었어요.',
-            grade: 4,
+            level: 2,
             topic: 'actions',
           },
         ],
@@ -680,7 +570,7 @@ The Hare ran as [[fast]] as he could, but it was too [[late]]. The Tortoise [[wo
             meaning: '계속했다',
             example: 'She kept studying.',
             exampleKorean: '그녀는 계속 공부했어요.',
-            grade: 4,
+            level: 2,
             topic: 'actions',
           },
           {
@@ -689,7 +579,7 @@ The Hare ran as [[fast]] as he could, but it was too [[late]]. The Tortoise [[wo
             meaning: '멈추다',
             example: 'Please stop running.',
             exampleKorean: '달리는 것을 멈춰주세요.',
-            grade: 4,
+            level: 2,
             topic: 'actions',
           },
           {
@@ -698,7 +588,7 @@ The Hare ran as [[fast]] as he could, but it was too [[late]]. The Tortoise [[wo
             meaning: '움직이는',
             example: 'The car is moving.',
             exampleKorean: '차가 움직이고 있어요.',
-            grade: 4,
+            level: 2,
             topic: 'actions',
           },
           {
@@ -707,7 +597,7 @@ The Hare ran as [[fast]] as he could, but it was too [[late]]. The Tortoise [[wo
             meaning: '지나쳤다',
             example: 'The bus passed by.',
             exampleKorean: '버스가 지나갔어요.',
-            grade: 4,
+            level: 2,
             topic: 'actions',
           },
           {
@@ -716,7 +606,7 @@ The Hare ran as [[fast]] as he could, but it was too [[late]]. The Tortoise [[wo
             meaning: '더 가까이',
             example: 'Come closer!',
             exampleKorean: '더 가까이 와!',
-            grade: 4,
+            level: 2,
             topic: 'places',
           },
           {
@@ -725,7 +615,7 @@ The Hare ran as [[fast]] as he could, but it was too [[late]]. The Tortoise [[wo
             meaning: '마침내',
             example: 'Finally, we arrived.',
             exampleKorean: '마침내 도착했어요.',
-            grade: 4,
+            level: 2,
             topic: 'time',
           },
           {
@@ -734,7 +624,7 @@ The Hare ran as [[fast]] as he could, but it was too [[late]]. The Tortoise [[wo
             meaning: '늦은',
             example: 'I was late for school.',
             exampleKorean: '학교에 늦었어요.',
-            grade: 4,
+            level: 2,
             topic: 'time',
           },
           {
@@ -743,7 +633,7 @@ The Hare ran as [[fast]] as he could, but it was too [[late]]. The Tortoise [[wo
             meaning: '이겼다',
             example: 'Our team won the game.',
             exampleKorean: '우리 팀이 경기에서 이겼어요.',
-            grade: 4,
+            level: 2,
             topic: 'sports',
           },
           {
@@ -752,7 +642,7 @@ The Hare ran as [[fast]] as he could, but it was too [[late]]. The Tortoise [[wo
             meaning: '느린',
             example: 'Go slow.',
             exampleKorean: '천천히 가세요.',
-            grade: 4,
+            level: 2,
             topic: 'actions',
           },
           {
@@ -761,7 +651,7 @@ The Hare ran as [[fast]] as he could, but it was too [[late]]. The Tortoise [[wo
             meaning: '꾸준한',
             example: 'Keep a steady pace.',
             exampleKorean: '꾸준한 속도를 유지하세요.',
-            grade: 4,
+            level: 2,
             topic: 'actions',
           },
         ],
@@ -801,7 +691,7 @@ The Hare ran as [[fast]] as he could, but it was too [[late]]. The Tortoise [[wo
     titleKorean: '사자와 생쥐',
     author: 'Aesop',
     collection: 'aesop',
-    difficulty: 4,
+    level: 2,
     description: 'A tiny mouse helps a mighty lion.',
     descriptionKorean: '작은 생쥐가 강한 사자를 도와요.',
     estimatedMinutes: 5,
@@ -836,7 +726,7 @@ The Lion [[laughed]]. "How can a [[tiny]] mouse help a mighty lion?"`,
             meaning: '사자',
             example: 'The lion is the king of animals.',
             exampleKorean: '사자는 동물의 왕이에요.',
-            grade: 4,
+            level: 2,
             topic: 'animals',
           },
           {
@@ -845,7 +735,7 @@ The Lion [[laughed]]. "How can a [[tiny]] mouse help a mighty lion?"`,
             meaning: '자고 있는',
             example: 'The baby is sleeping.',
             exampleKorean: '아기가 자고 있어요.',
-            grade: 4,
+            level: 2,
             topic: 'actions',
           },
           {
@@ -854,7 +744,7 @@ The Lion [[laughed]]. "How can a [[tiny]] mouse help a mighty lion?"`,
             meaning: '생쥐',
             example: 'The mouse likes cheese.',
             exampleKorean: '생쥐는 치즈를 좋아해요.',
-            grade: 4,
+            level: 2,
             topic: 'animals',
           },
           {
@@ -863,7 +753,7 @@ The Lion [[laughed]]. "How can a [[tiny]] mouse help a mighty lion?"`,
             meaning: '코',
             example: 'I have a small nose.',
             exampleKorean: '나는 작은 코를 가지고 있어요.',
-            grade: 4,
+            level: 2,
             topic: 'body',
           },
           {
@@ -872,7 +762,7 @@ The Lion [[laughed]]. "How can a [[tiny]] mouse help a mighty lion?"`,
             meaning: '잡았다',
             example: 'I caught the ball.',
             exampleKorean: '나는 공을 잡았어요.',
-            grade: 4,
+            level: 2,
             topic: 'actions',
           },
           {
@@ -881,7 +771,7 @@ The Lion [[laughed]]. "How can a [[tiny]] mouse help a mighty lion?"`,
             meaning: '발 (동물의)',
             example: 'The cat has soft paws.',
             exampleKorean: '고양이는 부드러운 발을 가지고 있어요.',
-            grade: 4,
+            level: 2,
             topic: 'animals',
           },
           {
@@ -890,7 +780,7 @@ The Lion [[laughed]]. "How can a [[tiny]] mouse help a mighty lion?"`,
             meaning: '깨우다',
             example: 'Please wake me up at 7.',
             exampleKorean: '7시에 깨워 주세요.',
-            grade: 4,
+            level: 2,
             topic: 'actions',
           },
           {
@@ -899,7 +789,7 @@ The Lion [[laughed]]. "How can a [[tiny]] mouse help a mighty lion?"`,
             meaning: '울었다, 외쳤다',
             example: 'She cried for help.',
             exampleKorean: '그녀가 도움을 요청하며 소리쳤어요.',
-            grade: 4,
+            level: 2,
             topic: 'emotions',
           },
           {
@@ -908,7 +798,7 @@ The Lion [[laughed]]. "How can a [[tiny]] mouse help a mighty lion?"`,
             meaning: '돕다',
             example: 'Can you help me?',
             exampleKorean: '도와줄 수 있어요?',
-            grade: 4,
+            level: 2,
             topic: 'actions',
           },
           {
@@ -917,7 +807,7 @@ The Lion [[laughed]]. "How can a [[tiny]] mouse help a mighty lion?"`,
             meaning: '아주 작은',
             example: 'The ant is tiny.',
             exampleKorean: '개미는 아주 작아요.',
-            grade: 4,
+            level: 2,
             topic: 'nature',
           },
         ],
@@ -973,7 +863,7 @@ The little Mouse [[heard]] the Lion's cries. He [[remembered]] his promise.
             meaning: '친절한',
             example: 'She is very kind.',
             exampleKorean: '그녀는 매우 친절해요.',
-            grade: 4,
+            level: 2,
             topic: 'emotions',
           },
           {
@@ -982,7 +872,7 @@ The little Mouse [[heard]] the Lion's cries. He [[remembered]] his promise.
             meaning: '나중에',
             example: 'See you later!',
             exampleKorean: '나중에 봐요!',
-            grade: 4,
+            level: 2,
             topic: 'time',
           },
           {
@@ -991,7 +881,7 @@ The little Mouse [[heard]] the Lion's cries. He [[remembered]] his promise.
             meaning: '갑자기',
             example: 'Suddenly, it started raining.',
             exampleKorean: '갑자기 비가 오기 시작했어요.',
-            grade: 4,
+            level: 2,
             topic: 'time',
           },
           {
@@ -1000,7 +890,7 @@ The little Mouse [[heard]] the Lion's cries. He [[remembered]] his promise.
             meaning: '덫',
             example: 'The hunter set a trap.',
             exampleKorean: '사냥꾼이 덫을 놓았어요.',
-            grade: 4,
+            level: 2,
             topic: 'nature',
           },
           {
@@ -1009,7 +899,7 @@ The little Mouse [[heard]] the Lion's cries. He [[remembered]] his promise.
             meaning: '그물',
             example: 'The fish is in the net.',
             exampleKorean: '물고기가 그물 안에 있어요.',
-            grade: 4,
+            level: 2,
             topic: 'nature',
           },
           {
@@ -1018,7 +908,7 @@ The little Mouse [[heard]] the Lion's cries. He [[remembered]] his promise.
             meaning: '탈출하다',
             example: 'The bird escaped from the cage.',
             exampleKorean: '새가 새장에서 탈출했어요.',
-            grade: 4,
+            level: 2,
             topic: 'actions',
           },
           {
@@ -1027,7 +917,7 @@ The little Mouse [[heard]] the Lion's cries. He [[remembered]] his promise.
             meaning: '으르렁거렸다',
             example: 'The lion roared loudly.',
             exampleKorean: '사자가 크게 으르렁거렸어요.',
-            grade: 4,
+            level: 2,
             topic: 'animals',
           },
           {
@@ -1036,7 +926,7 @@ The little Mouse [[heard]] the Lion's cries. He [[remembered]] his promise.
             meaning: '들었다',
             example: 'I heard a strange sound.',
             exampleKorean: '나는 이상한 소리를 들었어요.',
-            grade: 4,
+            level: 2,
             topic: 'actions',
           },
           {
@@ -1045,7 +935,7 @@ The little Mouse [[heard]] the Lion's cries. He [[remembered]] his promise.
             meaning: '기억했다',
             example: 'I remembered her name.',
             exampleKorean: '나는 그녀의 이름을 기억했어요.',
-            grade: 4,
+            level: 2,
             topic: 'actions',
           },
           {
@@ -1054,7 +944,7 @@ The little Mouse [[heard]] the Lion's cries. He [[remembered]] his promise.
             meaning: '걱정하다',
             example: 'Don\'t worry about it.',
             exampleKorean: '그것에 대해 걱정하지 마세요.',
-            grade: 4,
+            level: 2,
             topic: 'emotions',
           },
         ],
@@ -1106,7 +996,7 @@ The little Mouse [[heard]] the Lion's cries. He [[remembered]] his promise.
             meaning: '시작했다',
             example: 'The class began at 9 am.',
             exampleKorean: '수업이 오전 9시에 시작했어요.',
-            grade: 4,
+            level: 2,
             topic: 'actions',
           },
           {
@@ -1115,7 +1005,7 @@ The little Mouse [[heard]] the Lion's cries. He [[remembered]] his promise.
             meaning: '씹다, 갉다',
             example: 'Chew your food well.',
             exampleKorean: '음식을 잘 씹으세요.',
-            grade: 4,
+            level: 2,
             topic: 'actions',
           },
           {
@@ -1124,7 +1014,7 @@ The little Mouse [[heard]] the Lion's cries. He [[remembered]] his promise.
             meaning: '날카로운',
             example: 'The knife is sharp.',
             exampleKorean: '칼이 날카로워요.',
-            grade: 4,
+            level: 2,
             topic: 'nature',
           },
           {
@@ -1133,7 +1023,7 @@ The little Mouse [[heard]] the Lion's cries. He [[remembered]] his promise.
             meaning: '이빨',
             example: 'Brush your teeth.',
             exampleKorean: '이를 닦으세요.',
-            grade: 4,
+            level: 2,
             topic: 'body',
           },
           {
@@ -1142,7 +1032,7 @@ The little Mouse [[heard]] the Lion's cries. He [[remembered]] his promise.
             meaning: '곧',
             example: 'I will come soon.',
             exampleKorean: '곧 갈게요.',
-            grade: 4,
+            level: 2,
             topic: 'time',
           },
           {
@@ -1151,7 +1041,7 @@ The little Mouse [[heard]] the Lion's cries. He [[remembered]] his promise.
             meaning: '부러졌다',
             example: 'The window broke.',
             exampleKorean: '창문이 깨졌어요.',
-            grade: 4,
+            level: 2,
             topic: 'actions',
           },
           {
@@ -1160,7 +1050,7 @@ The little Mouse [[heard]] the Lion's cries. He [[remembered]] his promise.
             meaning: '자유로운',
             example: 'The bird is free.',
             exampleKorean: '새가 자유로워요.',
-            grade: 4,
+            level: 2,
             topic: 'emotions',
           },
           {
@@ -1169,7 +1059,7 @@ The little Mouse [[heard]] the Lion's cries. He [[remembered]] his promise.
             meaning: '틀린',
             example: 'I was wrong.',
             exampleKorean: '내가 틀렸어요.',
-            grade: 4,
+            level: 2,
             topic: 'school',
           },
           {
@@ -1178,7 +1068,7 @@ The little Mouse [[heard]] the Lion's cries. He [[remembered]] his promise.
             meaning: '작은',
             example: 'The mouse is small.',
             exampleKorean: '생쥐는 작아요.',
-            grade: 4,
+            level: 2,
             topic: 'nature',
           },
           {
@@ -1187,7 +1077,7 @@ The little Mouse [[heard]] the Lion's cries. He [[remembered]] his promise.
             meaning: '훌륭한, 큰',
             example: 'You did a great job!',
             exampleKorean: '정말 잘했어요!',
-            grade: 4,
+            level: 2,
             topic: 'emotions',
           },
         ],
