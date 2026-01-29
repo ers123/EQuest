@@ -1,0 +1,17 @@
+{
+  "name": "EQuest - English Adventure",
+  "short_name": "EQuest",
+  "description": "Fun English Learning for Elementary Students",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFF8F5",
+  "theme_color": "#FF7043",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

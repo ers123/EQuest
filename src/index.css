@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-gray-900 font-sans antialiased;
+    @apply min-h-screen overflow-x-hidden;
+    overscroll-behavior: none;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/20 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/40;
+  }
+}
+
+@layer components {
+  /* Glass morphism card */
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-lg border border-white/20;
+    @apply shadow-card rounded-3xl;
+  }
+
+  /* 3D Button base styles */
+  .btn-3d {
+    @apply relative inline-flex items-center justify-center;
+    @apply font-bold rounded-2xl transition-all duration-150;
+    @apply active:scale-95 active:translate-y-1;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-primary bg-clip-text text-transparent;
+  }
+
+  /* Floating animation for mascot */
+  .mascot-float {
+    @apply animate-float drop-shadow-2xl;
+  }
+
+  /* Story word highlight */
+  .word-highlight {
+    @apply cursor-pointer rounded px-0.5 -mx-0.5;
+    @apply hover:bg-primary/10 active:bg-primary/20;
+    @apply transition-colors duration-150;
+  }
+
+  .word-highlight.vocabulary {
+    @apply bg-gold/30 hover:bg-gold/50;
+  }
+
+  /* Quiz option card */
+  .quiz-option {
+    @apply p-4 rounded-2xl border-2 border-gray-100;
+    @apply bg-white shadow-card cursor-pointer;
+    @apply transition-all duration-200;
+    @apply hover:border-primary/30 hover:shadow-card-hover;
+    @apply active:scale-95;
+  }
+
+  .quiz-option.selected {
+    @apply border-primary bg-primary/5;
+  }
+
+  .quiz-option.correct {
+    @apply border-secondary bg-secondary/10;
+  }
+
+  .quiz-option.incorrect {
+    @apply border-red-400 bg-red-50;
+  }
+
+  /* Progress bar */
+  .progress-bar {
+    @apply h-3 bg-gray-100 rounded-full overflow-hidden;
+  }
+
+  .progress-bar-fill {
+    @apply h-full bg-gradient-primary rounded-full;
+    @apply transition-all duration-500 ease-out;
+  }
+
+  /* XP badge */
+  .xp-badge {
+    @apply inline-flex items-center gap-1 px-3 py-1;
+    @apply bg-gradient-gold text-amber-900 font-bold;
+    @apply rounded-full text-sm shadow-sm;
+  }
+
+  /* Level badge */
+  .level-badge {
+    @apply inline-flex items-center gap-1 px-3 py-1;
+    @apply bg-gradient-accent text-white font-bold;
+    @apply rounded-full text-sm shadow-sm;
+  }
+
+  /* Streak flame */
+  .streak-badge {
+    @apply inline-flex items-center gap-1 px-3 py-1;
+    @apply bg-gradient-primary text-white font-bold;
+    @apply rounded-full text-sm shadow-sm;
+  }
+}
+
+@layer utilities {
+  /* Safe area for mobile */
+  .safe-bottom {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+
+  .safe-top {
+    padding-top: max(1rem, env(safe-area-inset-top));
+  }
+}

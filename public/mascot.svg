@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Eddie the Fox - Full mascot -->
+
+  <!-- Body -->
+  <ellipse cx="100" cy="160" rx="45" ry="35" fill="#FF7043"/>
+  <ellipse cx="100" cy="158" rx="40" ry="30" fill="#FF8A65"/>
+
+  <!-- Belly -->
+  <ellipse cx="100" cy="162" rx="25" ry="20" fill="#FFF8E1"/>
+
+  <!-- Tail -->
+  <path d="M140 160 Q180 140 175 100 Q170 80 150 90 Q165 110 145 150 Z" fill="#FF7043"/>
+  <path d="M155 100 Q150 95 145 105 Q155 115 150 130" fill="white"/>
+
+  <!-- Head -->
+  <circle cx="100" cy="80" r="55" fill="#FF7043"/>
+  <circle cx="100" cy="78" r="50" fill="#FF8A65"/>
+
+  <!-- Ears -->
+  <path d="M55 50 L65 15 L80 45 Z" fill="#FF7043" stroke="#E64A19" stroke-width="2"/>
+  <path d="M62 43 L67 25 L75 40 Z" fill="#FFB74D"/>
+  <path d="M145 50 L135 15 L120 45 Z" fill="#FF7043" stroke="#E64A19" stroke-width="2"/>
+  <path d="M138 43 L133 25 L125 40 Z" fill="#FFB74D"/>
+
+  <!-- Face (white patch) -->
+  <ellipse cx="100" cy="95" rx="30" ry="28" fill="white"/>
+  <ellipse cx="100" cy="100" rx="22" ry="20" fill="#FFF8E1"/>
+
+  <!-- Eyes -->
+  <ellipse cx="82" cy="75" rx="10" ry="12" fill="white"/>
+  <ellipse cx="84" cy="77" rx="6" ry="8" fill="#4A4A4A"/>
+  <circle cx="87" cy="74" r="3" fill="white"/>
+
+  <ellipse cx="118" cy="75" rx="10" ry="12" fill="white"/>
+  <ellipse cx="116" cy="77" rx="6" ry="8" fill="#4A4A4A"/>
+  <circle cx="119" cy="74" r="3" fill="white"/>
+
+  <!-- Eyebrows -->
+  <path d="M72 62 Q82 58 90 64" fill="none" stroke="#E64A19" stroke-width="2" stroke-linecap="round"/>
+  <path d="M128 62 Q118 58 110 64" fill="none" stroke="#E64A19" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Nose -->
+  <ellipse cx="100" cy="90" rx="7" ry="5" fill="#4A4A4A"/>
+  <ellipse cx="100" cy="89" rx="3" ry="2" fill="#6A6A6A"/>
+
+  <!-- Mouth (smile) -->
+  <path d="M88 100 Q100 115 112 100" fill="none" stroke="#4A4A4A" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Cheek blush -->
+  <circle cx="65" cy="85" r="8" fill="#FF8A80" opacity="0.5"/>
+  <circle cx="135" cy="85" r="8" fill="#FF8A80" opacity="0.5"/>
+
+  <!-- Front legs/paws -->
+  <ellipse cx="75" cy="185" rx="12" ry="8" fill="#FF7043"/>
+  <ellipse cx="75" cy="185" rx="8" ry="5" fill="#FFF8E1"/>
+
+  <ellipse cx="125" cy="185" rx="12" ry="8" fill="#FF7043"/>
+  <ellipse cx="125" cy="185" rx="8" ry="5" fill="#FFF8E1"/>
+</svg>

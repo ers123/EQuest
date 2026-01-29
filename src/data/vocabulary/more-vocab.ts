@@ -1,0 +1,136 @@
+import { Word } from '@/types';
+
+// Additional vocabulary for Grade 5-6
+export const MORE_VOCABULARY: Word[] = [
+  // Travel & Transportation
+  { word: 'airplane', pronunciation: '/ˈerpleɪn/', meaning: '비행기', example: 'The airplane flies high in the sky.', grade: 4, topic: 'travel' },
+  { word: 'train', pronunciation: '/treɪn/', meaning: '기차', example: 'We took the train to Busan.', grade: 4, topic: 'travel' },
+  { word: 'bus', pronunciation: '/bʌs/', meaning: '버스', example: 'I take the bus to school.', grade: 4, topic: 'travel' },
+  { word: 'bicycle', pronunciation: '/ˈbaɪsɪkl/', meaning: '자전거', example: 'I ride my bicycle in the park.', grade: 4, topic: 'travel' },
+  { word: 'ship', pronunciation: '/ʃɪp/', meaning: '배', example: 'The ship sailed across the ocean.', grade: 4, topic: 'travel' },
+  { word: 'ticket', pronunciation: '/ˈtɪkɪt/', meaning: '표', example: 'Buy a ticket before boarding.', grade: 4, topic: 'travel' },
+  { word: 'passport', pronunciation: '/ˈpæspɔːrt/', meaning: '여권', example: 'You need a passport to travel abroad.', grade: 5, topic: 'travel' },
+  { word: 'suitcase', pronunciation: '/ˈsuːtkeɪs/', meaning: '여행 가방', example: 'Pack your suitcase for the trip.', grade: 5, topic: 'travel' },
+  { word: 'vacation', pronunciation: '/veɪˈkeɪʃn/', meaning: '휴가', example: 'Summer vacation is my favorite time.', grade: 4, topic: 'travel' },
+  { word: 'tourist', pronunciation: '/ˈtʊrɪst/', meaning: '관광객', example: 'Many tourists visit Seoul.', grade: 5, topic: 'travel' },
+
+  // Clothes
+  { word: 'shirt', pronunciation: '/ʃɜːrt/', meaning: '셔츠', example: 'He wears a white shirt.', grade: 4, topic: 'clothes' },
+  { word: 'pants', pronunciation: '/pænts/', meaning: '바지', example: 'These pants are too long.', grade: 4, topic: 'clothes' },
+  { word: 'dress', pronunciation: '/dres/', meaning: '드레스', example: 'She wore a beautiful dress.', grade: 4, topic: 'clothes' },
+  { word: 'jacket', pronunciation: '/ˈdʒækɪt/', meaning: '재킷', example: 'Put on your jacket. It\'s cold.', grade: 4, topic: 'clothes' },
+  { word: 'shoes', pronunciation: '/ʃuːz/', meaning: '신발', example: 'Take off your shoes at the door.', grade: 4, topic: 'clothes' },
+  { word: 'socks', pronunciation: '/sɑːks/', meaning: '양말', example: 'I need new socks.', grade: 4, topic: 'clothes' },
+  { word: 'hat', pronunciation: '/hæt/', meaning: '모자', example: 'Wear a hat in the sun.', grade: 4, topic: 'clothes' },
+  { word: 'gloves', pronunciation: '/ɡlʌvz/', meaning: '장갑', example: 'Wear gloves in winter.', grade: 4, topic: 'clothes' },
+  { word: 'scarf', pronunciation: '/skɑːrf/', meaning: '스카프', example: 'The scarf keeps my neck warm.', grade: 4, topic: 'clothes' },
+  { word: 'uniform', pronunciation: '/ˈjuːnɪfɔːrm/', meaning: '교복, 유니폼', example: 'Students wear uniforms to school.', grade: 5, topic: 'clothes' },
+
+  // House & Furniture
+  { word: 'bedroom', pronunciation: '/ˈbedruːm/', meaning: '침실', example: 'My bedroom is upstairs.', grade: 4, topic: 'places' },
+  { word: 'kitchen', pronunciation: '/ˈkɪtʃɪn/', meaning: '부엌', example: 'Mom cooks in the kitchen.', grade: 4, topic: 'places' },
+  { word: 'bathroom', pronunciation: '/ˈbæθruːm/', meaning: '욕실', example: 'I brush my teeth in the bathroom.', grade: 4, topic: 'places' },
+  { word: 'living room', pronunciation: '/ˈlɪvɪŋ ruːm/', meaning: '거실', example: 'We watch TV in the living room.', grade: 4, topic: 'places' },
+  { word: 'stairs', pronunciation: '/sterz/', meaning: '계단', example: 'Be careful on the stairs.', grade: 4, topic: 'places' },
+  { word: 'door', pronunciation: '/dɔːr/', meaning: '문', example: 'Please close the door.', grade: 4, topic: 'places' },
+  { word: 'window', pronunciation: '/ˈwɪndoʊ/', meaning: '창문', example: 'Open the window for fresh air.', grade: 4, topic: 'places' },
+  { word: 'table', pronunciation: '/ˈteɪbl/', meaning: '탁자', example: 'Put the book on the table.', grade: 4, topic: 'places' },
+  { word: 'chair', pronunciation: '/tʃer/', meaning: '의자', example: 'Sit on the chair.', grade: 4, topic: 'places' },
+  { word: 'bed', pronunciation: '/bed/', meaning: '침대', example: 'Go to bed early.', grade: 4, topic: 'places' },
+
+  // Food & Cooking
+  { word: 'rice', pronunciation: '/raɪs/', meaning: '쌀, 밥', example: 'Koreans eat rice every day.', grade: 4, topic: 'food' },
+  { word: 'soup', pronunciation: '/suːp/', meaning: '국', example: 'This soup is hot.', grade: 4, topic: 'food' },
+  { word: 'meat', pronunciation: '/miːt/', meaning: '고기', example: 'I like grilled meat.', grade: 4, topic: 'food' },
+  { word: 'fish', pronunciation: '/fɪʃ/', meaning: '생선', example: 'Fish is healthy food.', grade: 4, topic: 'food' },
+  { word: 'egg', pronunciation: '/eɡ/', meaning: '달걀', example: 'I had eggs for breakfast.', grade: 4, topic: 'food' },
+  { word: 'milk', pronunciation: '/mɪlk/', meaning: '우유', example: 'Drink milk every day.', grade: 4, topic: 'food' },
+  { word: 'juice', pronunciation: '/dʒuːs/', meaning: '주스', example: 'Orange juice is my favorite.', grade: 4, topic: 'food' },
+  { word: 'cookie', pronunciation: '/ˈkʊki/', meaning: '쿠키', example: 'Mom baked cookies.', grade: 4, topic: 'food' },
+  { word: 'cake', pronunciation: '/keɪk/', meaning: '케이크', example: 'We had cake at the party.', grade: 4, topic: 'food' },
+  { word: 'ice cream', pronunciation: '/aɪs kriːm/', meaning: '아이스크림', example: 'I love chocolate ice cream.', grade: 4, topic: 'food' },
+
+  // Describing Things (Adjectives)
+  { word: 'big', pronunciation: '/bɪɡ/', meaning: '큰', example: 'Elephants are big.', grade: 4, topic: 'nature' },
+  { word: 'small', pronunciation: '/smɔːl/', meaning: '작은', example: 'Ants are very small.', grade: 4, topic: 'nature' },
+  { word: 'tall', pronunciation: '/tɔːl/', meaning: '키가 큰', example: 'Giraffes are tall.', grade: 4, topic: 'body' },
+  { word: 'short', pronunciation: '/ʃɔːrt/', meaning: '키가 작은', example: 'My little brother is short.', grade: 4, topic: 'body' },
+  { word: 'long', pronunciation: '/lɔːŋ/', meaning: '긴', example: 'Snakes are long.', grade: 4, topic: 'nature' },
+  { word: 'heavy', pronunciation: '/ˈhevi/', meaning: '무거운', example: 'This box is heavy.', grade: 4, topic: 'nature' },
+  { word: 'light', pronunciation: '/laɪt/', meaning: '가벼운', example: 'Feathers are light.', grade: 4, topic: 'nature' },
+  { word: 'old', pronunciation: '/oʊld/', meaning: '오래된, 늙은', example: 'This is an old book.', grade: 4, topic: 'time' },
+  { word: 'new', pronunciation: '/nuː/', meaning: '새로운', example: 'I got new shoes.', grade: 4, topic: 'time' },
+  { word: 'young', pronunciation: '/jʌŋ/', meaning: '어린', example: 'The young boy is playing.', grade: 4, topic: 'family' },
+
+  // Actions (More Verbs)
+  { word: 'eat', pronunciation: '/iːt/', meaning: '먹다', example: 'I eat breakfast at 7 am.', grade: 4, topic: 'actions' },
+  { word: 'drink', pronunciation: '/drɪŋk/', meaning: '마시다', example: 'Drink plenty of water.', grade: 4, topic: 'actions' },
+  { word: 'sleep', pronunciation: '/sliːp/', meaning: '자다', example: 'I sleep at 10 pm.', grade: 4, topic: 'actions' },
+  { word: 'wake', pronunciation: '/weɪk/', meaning: '깨다', example: 'I wake up at 7 am.', grade: 4, topic: 'actions' },
+  { word: 'sing', pronunciation: '/sɪŋ/', meaning: '노래하다', example: 'Birds sing in the morning.', grade: 4, topic: 'actions' },
+  { word: 'dance', pronunciation: '/dæns/', meaning: '춤추다', example: 'She loves to dance.', grade: 4, topic: 'actions' },
+  { word: 'draw', pronunciation: '/drɔː/', meaning: '그리다', example: 'I draw pictures.', grade: 4, topic: 'actions' },
+  { word: 'paint', pronunciation: '/peɪnt/', meaning: '칠하다', example: 'We painted the wall blue.', grade: 4, topic: 'actions' },
+  { word: 'cook', pronunciation: '/kʊk/', meaning: '요리하다', example: 'Dad cooks dinner.', grade: 4, topic: 'actions' },
+  { word: 'clean', pronunciation: '/kliːn/', meaning: '청소하다', example: 'Clean your room.', grade: 4, topic: 'actions' },
+
+  // Grade 5-6 Advanced Vocabulary
+  { word: 'actually', pronunciation: '/ˈæktʃuəli/', meaning: '사실은', example: 'Actually, I don\'t agree.', grade: 5, topic: 'school' },
+  { word: 'probably', pronunciation: '/ˈprɑːbəbli/', meaning: '아마', example: 'It will probably rain tomorrow.', grade: 5, topic: 'weather' },
+  { word: 'especially', pronunciation: '/ɪˈspeʃəli/', meaning: '특히', example: 'I like fruits, especially apples.', grade: 5, topic: 'food' },
+  { word: 'suddenly', pronunciation: '/ˈsʌdənli/', meaning: '갑자기', example: 'Suddenly, the lights went out.', grade: 5, topic: 'time' },
+  { word: 'carefully', pronunciation: '/ˈkerfəli/', meaning: '조심스럽게', example: 'Walk carefully on the ice.', grade: 5, topic: 'actions' },
+  { word: 'quickly', pronunciation: '/ˈkwɪkli/', meaning: '빠르게', example: 'Run quickly!', grade: 5, topic: 'actions' },
+  { word: 'quietly', pronunciation: '/ˈkwaɪətli/', meaning: '조용히', example: 'Speak quietly in the library.', grade: 5, topic: 'actions' },
+  { word: 'easily', pronunciation: '/ˈiːzɪli/', meaning: '쉽게', example: 'She solved the problem easily.', grade: 5, topic: 'school' },
+  { word: 'finally', pronunciation: '/ˈfaɪnəli/', meaning: '마침내', example: 'Finally, we arrived!', grade: 5, topic: 'time' },
+  { word: 'usually', pronunciation: '/ˈjuːʒuəli/', meaning: '보통', example: 'I usually wake up at 7 am.', grade: 5, topic: 'time' },
+
+  // Feelings & Personality
+  { word: 'brave', pronunciation: '/breɪv/', meaning: '용감한', example: 'The brave knight fought the dragon.', grade: 5, topic: 'emotions' },
+  { word: 'shy', pronunciation: '/ʃaɪ/', meaning: '부끄러워하는', example: 'She is too shy to speak.', grade: 4, topic: 'emotions' },
+  { word: 'friendly', pronunciation: '/ˈfrendli/', meaning: '친절한', example: 'He is very friendly.', grade: 4, topic: 'emotions' },
+  { word: 'polite', pronunciation: '/pəˈlaɪt/', meaning: '예의 바른', example: 'Always be polite to others.', grade: 5, topic: 'emotions' },
+  { word: 'rude', pronunciation: '/ruːd/', meaning: '무례한', example: 'Don\'t be rude.', grade: 5, topic: 'emotions' },
+  { word: 'lazy', pronunciation: '/ˈleɪzi/', meaning: '게으른', example: 'The lazy cat sleeps all day.', grade: 4, topic: 'emotions' },
+  { word: 'busy', pronunciation: '/ˈbɪzi/', meaning: '바쁜', example: 'I am very busy today.', grade: 4, topic: 'emotions' },
+  { word: 'calm', pronunciation: '/kɑːm/', meaning: '차분한', example: 'Stay calm and relax.', grade: 5, topic: 'emotions' },
+  { word: 'nervous', pronunciation: '/ˈnɜːrvəs/', meaning: '긴장한', example: 'I feel nervous before tests.', grade: 5, topic: 'emotions' },
+  { word: 'confident', pronunciation: '/ˈkɑːnfɪdənt/', meaning: '자신감 있는', example: 'Be confident in yourself.', grade: 5, topic: 'emotions' },
+
+  // Nature & Environment
+  { word: 'sun', pronunciation: '/sʌn/', meaning: '해', example: 'The sun rises in the east.', grade: 4, topic: 'nature' },
+  { word: 'rain', pronunciation: '/reɪn/', meaning: '비', example: 'The rain is falling.', grade: 4, topic: 'weather' },
+  { word: 'wind', pronunciation: '/wɪnd/', meaning: '바람', example: 'The wind is blowing.', grade: 4, topic: 'weather' },
+  { word: 'leaf', pronunciation: '/liːf/', meaning: '잎', example: 'Leaves fall in autumn.', grade: 4, topic: 'nature' },
+  { word: 'grass', pronunciation: '/ɡræs/', meaning: '풀', example: 'The grass is green.', grade: 4, topic: 'nature' },
+  { word: 'rock', pronunciation: '/rɑːk/', meaning: '바위', example: 'He sat on a rock.', grade: 4, topic: 'nature' },
+  { word: 'sand', pronunciation: '/sænd/', meaning: '모래', example: 'We played in the sand.', grade: 4, topic: 'nature' },
+  { word: 'island', pronunciation: '/ˈaɪlənd/', meaning: '섬', example: 'Jeju is a beautiful island.', grade: 5, topic: 'nature' },
+  { word: 'lake', pronunciation: '/leɪk/', meaning: '호수', example: 'Fish swim in the lake.', grade: 4, topic: 'nature' },
+  { word: 'cave', pronunciation: '/keɪv/', meaning: '동굴', example: 'Bats live in caves.', grade: 5, topic: 'nature' },
+
+  // Science & Technology
+  { word: 'computer', pronunciation: '/kəmˈpjuːtər/', meaning: '컴퓨터', example: 'I use a computer for homework.', grade: 4, topic: 'school' },
+  { word: 'phone', pronunciation: '/foʊn/', meaning: '전화', example: 'Answer the phone.', grade: 4, topic: 'school' },
+  { word: 'internet', pronunciation: '/ˈɪntərnet/', meaning: '인터넷', example: 'I search on the internet.', grade: 5, topic: 'school' },
+  { word: 'robot', pronunciation: '/ˈroʊbɑːt/', meaning: '로봇', example: 'Robots can help humans.', grade: 5, topic: 'school' },
+  { word: 'scientist', pronunciation: '/ˈsaɪəntɪst/', meaning: '과학자', example: 'Scientists discover new things.', grade: 5, topic: 'family' },
+  { word: 'experiment', pronunciation: '/ɪkˈsperɪmənt/', meaning: '실험', example: 'We did an experiment in class.', grade: 5, topic: 'school' },
+  { word: 'electricity', pronunciation: '/ɪlekˈtrɪsəti/', meaning: '전기', example: 'Electricity powers our homes.', grade: 5, topic: 'nature' },
+  { word: 'energy', pronunciation: '/ˈenərdʒi/', meaning: '에너지', example: 'We need energy to play.', grade: 5, topic: 'body' },
+  { word: 'machine', pronunciation: '/məˈʃiːn/', meaning: '기계', example: 'This machine washes clothes.', grade: 5, topic: 'school' },
+  { word: 'invention', pronunciation: '/ɪnˈvenʃn/', meaning: '발명품', example: 'The lightbulb was a great invention.', grade: 5, topic: 'school' },
+
+  // Grade 6 Vocabulary
+  { word: 'accomplish', pronunciation: '/əˈkɑːmplɪʃ/', meaning: '성취하다', example: 'You can accomplish your goals.', grade: 6, topic: 'actions' },
+  { word: 'achieve', pronunciation: '/əˈtʃiːv/', meaning: '달성하다', example: 'Work hard to achieve your dreams.', grade: 6, topic: 'actions' },
+  { word: 'opportunity', pronunciation: '/ˌɑːpərˈtuːnəti/', meaning: '기회', example: 'This is a great opportunity.', grade: 6, topic: 'school' },
+  { word: 'responsibility', pronunciation: '/rɪˌspɑːnsəˈbɪləti/', meaning: '책임', example: 'It is your responsibility.', grade: 6, topic: 'school' },
+  { word: 'environment', pronunciation: '/ɪnˈvaɪrənmənt/', meaning: '환경', example: 'We must protect the environment.', grade: 6, topic: 'nature' },
+  { word: 'communicate', pronunciation: '/kəˈmjuːnɪkeɪt/', meaning: '소통하다', example: 'We communicate through language.', grade: 6, topic: 'actions' },
+  { word: 'determination', pronunciation: '/dɪˌtɜːrmɪˈneɪʃn/', meaning: '결심', example: 'She has great determination.', grade: 6, topic: 'emotions' },
+  { word: 'cooperation', pronunciation: '/koʊˌɑːpəˈreɪʃn/', meaning: '협력', example: 'Teamwork requires cooperation.', grade: 6, topic: 'school' },
+  { word: 'imagination', pronunciation: '/ɪˌmædʒɪˈneɪʃn/', meaning: '상상력', example: 'Use your imagination!', grade: 6, topic: 'emotions' },
+  { word: 'celebration', pronunciation: '/ˌseləˈbreɪʃn/', meaning: '축하', example: 'The celebration was wonderful.', grade: 6, topic: 'emotions' },
+];
