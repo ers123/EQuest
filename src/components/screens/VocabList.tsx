@@ -110,6 +110,7 @@ export function VocabList({ onBack, onStartQuiz }: VocabListProps) {
     const unlearnedWords = filteredVocab.filter(
       (word) => !isWordMastered(word.word) && !isWordLearning(word.word)
     );
+    if (unlearnedWords.length === 0) return;
     const wordsToLearn = unlearnedWords.slice(0, 10);
 
     // Add new words to SRS
@@ -120,9 +121,15 @@ export function VocabList({ onBack, onStartQuiz }: VocabListProps) {
 
   // Start practice with random words
   const startPractice = () => {
+    if (filteredVocab.length === 0) return;
     const shuffled = [...filteredVocab].sort(() => Math.random() - 0.5);
     onStartQuiz(shuffled.slice(0, 10));
   };
+
+  // Check availability for buttons
+  const unlearnedCount = filteredVocab.filter(
+    (word) => !isWordMastered(word.word) && !isWordLearning(word.word)
+  ).length;
 
   // Speak word
   const speakWord = (word: string) => {
@@ -221,9 +228,10 @@ export function VocabList({ onBack, onStartQuiz }: VocabListProps) {
               size="md"
               fullWidth
               onClick={startLearning}
+              disabled={unlearnedCount === 0}
             >
               <Play className="w-4 h-4" />
-              Learn New
+              {unlearnedCount > 0 ? 'Learn New' : 'All Learned!'}
             </Button>
 
             <Button
@@ -232,6 +240,7 @@ export function VocabList({ onBack, onStartQuiz }: VocabListProps) {
               fullWidth
               onClick={startPractice}
               className={stats.dueToday > 0 ? 'col-span-2' : ''}
+              disabled={filteredVocab.length === 0}
             >
               <Target className="w-4 h-4" />
               Practice All
@@ -336,6 +345,14 @@ export function VocabList({ onBack, onStartQuiz }: VocabListProps) {
             ))}
           </div>
         </div>
+
+        {/* Empty state */}
+        {Object.keys(groupedVocab).length === 0 && (
+          <Card className="mb-6 text-center py-8">
+            <p className="text-gray-500 text-lg mb-1">No words found</p>
+            <p className="text-gray-400 text-sm">이 필터에 해당하는 단어가 없어요. 다른 레벨이나 주제를 선택해 보세요.</p>
+          </Card>
+        )}
 
         {/* Word list by topic */}
         {Object.entries(groupedVocab).map(([topic, words]) => (
