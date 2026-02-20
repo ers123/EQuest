@@ -4,6 +4,7 @@ import { useProgressStore } from '@/store/useProgressStore';
 import { useSRS } from '@/hooks/useSRS';
 import { useConfetti } from '@/hooks/useConfetti';
 import { Word } from '@/types';
+import { VOCABULARY } from '@/data/vocabulary';
 import { Card } from '@/components/ui/Card';
 import { Button, IconButton } from '@/components/ui/Button';
 import { ProgressBar } from '@/components/ui/ProgressBar';
@@ -48,9 +49,16 @@ export function VocabQuiz({ words, onBack, onComplete }: VocabQuizProps) {
       const types: QuizType[] = ['en-to-ko', 'ko-to-en', 'listen'];
       const type = types[Math.floor(Math.random() * 2)]; // Mostly en-ko or ko-en
 
-      // Generate options
-      const otherWords = words.filter((w) => w.word !== word.word);
-      const shuffledOthers = otherWords.sort(() => Math.random() - 0.5).slice(0, 3);
+      // Generate distractor options - use full vocabulary as fallback when quiz pool is small
+      let distractorPool = words.filter((w) => w.word !== word.word);
+      if (distractorPool.length < 3) {
+        const quizWordIds = new Set(words.map((w) => w.word));
+        const additionalWords = VOCABULARY.filter(
+          (w) => w.word !== word.word && !quizWordIds.has(w.word)
+        );
+        distractorPool = [...distractorPool, ...additionalWords];
+      }
+      const shuffledOthers = distractorPool.sort(() => Math.random() - 0.5).slice(0, 3);
 
       let options: string[];
       let correctIndex: number;
@@ -59,6 +67,20 @@ export function VocabQuiz({ words, onBack, onComplete }: VocabQuizProps) {
         options = [word.meaning, ...shuffledOthers.map((w) => w.meaning)];
       } else {
         options = [word.word, ...shuffledOthers.map((w) => w.word)];
+      }
+
+      // Deduplicate options (in case meanings overlap), then pad if needed
+      const uniqueOptions = [...new Set(options)];
+      if (uniqueOptions.length < options.length) {
+        const extraWords = VOCABULARY
+          .filter((w) => w.word !== word.word && !uniqueOptions.includes(w.meaning) && !uniqueOptions.includes(w.word))
+          .sort(() => Math.random() - 0.5);
+        for (const ew of extraWords) {
+          if (uniqueOptions.length >= 4) break;
+          const val = type === 'ko-to-en' ? ew.word : ew.meaning;
+          if (!uniqueOptions.includes(val)) uniqueOptions.push(val);
+        }
+        options = uniqueOptions;
       }
 
       // Shuffle options and find correct index
