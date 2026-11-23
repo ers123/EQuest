@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback } from 'react';
-import { AnimatePresence } from 'framer-motion';
 import { useProgressStore } from '@/store/useProgressStore';
 import { Screen, Story, Word } from '@/types';
 
@@ -10,6 +9,7 @@ import { StoryList } from '@/components/screens/StoryList';
 import { StoryReader } from '@/components/screens/StoryReader';
 import { VocabList } from '@/components/screens/VocabList';
 import { VocabQuiz } from '@/components/screens/VocabQuiz';
+import { Listen } from '@/components/screens/Listen';
 import { Stats } from '@/components/screens/Stats';
 import { Achievements } from '@/components/screens/Achievements';
 
@@ -22,7 +22,7 @@ import { useConfetti } from '@/hooks/useConfetti';
 
 function App() {
   const { isInitialized, checkDailyLogin, stats } = useProgressStore();
-  const [screen, setScreen] = useState<Screen>('home');
+  const [screen, setScreen] = useState<Screen>(() => window.location.hash.startsWith('#listen') ? 'listen' : 'home');
   const [selectedStory, setSelectedStory] = useState<Story | null>(null);
   const [selectedWords, setSelectedWords] = useState<Word[]>([]);
   const [previousLevel, setPreviousLevel] = useState(stats.level);
@@ -47,13 +47,24 @@ function App() {
 
   // Determine initial screen
   useEffect(() => {
-    if (!isInitialized) {
+    if (!isInitialized && !window.location.hash.startsWith('#listen')) {
       setScreen('onboarding');
     }
   }, [isInitialized]);
 
+  useEffect(() => {
+    const syncRoute = () => setScreen(window.location.hash.startsWith('#listen') ? 'listen' : isInitialized ? 'home' : 'onboarding');
+    window.addEventListener('hashchange', syncRoute);
+    return () => window.removeEventListener('hashchange', syncRoute);
+  }, [isInitialized]);
+
   // Navigation handlers
   const navigate = useCallback((newScreen: Screen) => {
+    if (newScreen === 'listen') {
+      if (!window.location.hash.startsWith('#listen')) window.location.hash = 'listen';
+    } else if (window.location.hash.startsWith('#listen')) {
+      window.history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
     setScreen(newScreen);
   }, []);
 
@@ -88,11 +99,13 @@ function App() {
   // Render current screen
   const renderScreen = () => {
     switch (screen) {
+      case 'listen':
+        return <Listen onBack={() => navigate(isInitialized ? 'home' : 'onboarding')} />;
+
       case 'onboarding':
         return (
           <Onboarding
             onComplete={() => {
-              fireConfetti();
               navigate('home');
             }}
           />
@@ -162,9 +175,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-background">
-      <AnimatePresence mode="wait">
-        {renderScreen()}
-      </AnimatePresence>
+      {renderScreen()}
 
       {/* Level Up Popup */}
       <LevelUpPopup

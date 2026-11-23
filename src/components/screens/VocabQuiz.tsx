@@ -216,12 +216,12 @@ export function VocabQuiz({ words, onBack, onComplete }: VocabQuizProps) {
           </h2>
           <p className="text-gray-500 mb-6">
             {percentage === 100
-              ? 'Perfect! 완벽해요! 🎉'
+              ? 'Perfect! 완벽해요!'
               : percentage >= 80
-              ? 'Great job! 잘했어요! 👏'
+              ? 'Great job! 잘했어요!'
               : percentage >= 60
-              ? 'Good effort! 좋아요! 👍'
-              : 'Keep practicing! 연습해요! 💪'}
+              ? 'Good effort! 좋아요!'
+              : 'Keep practicing! 연습해요!'}
           </p>
 
           {/* Score breakdown */}
@@ -270,7 +270,7 @@ export function VocabQuiz({ words, onBack, onComplete }: VocabQuizProps) {
       {/* Header */}
       <header className="sticky top-0 z-20 bg-background/95 backdrop-blur-sm border-b border-gray-100 px-4 py-3">
         <div className="flex items-center gap-3 mb-3">
-          <IconButton onClick={onBack}>
+          <IconButton onClick={onBack} aria-label="단어장으로">
             <ArrowLeft className="w-5 h-5" />
           </IconButton>
 

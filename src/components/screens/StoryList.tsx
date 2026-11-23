@@ -1,323 +1,94 @@
 import { useState, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { useProgressStore } from '@/store/useProgressStore';
 import { Story, Level, LEVEL_INFO } from '@/types';
 import { STORIES } from '@/data/stories';
-import { AnimatedCard } from '@/components/ui/Card';
 import { IconButton } from '@/components/ui/Button';
-import { ProgressBar } from '@/components/ui/ProgressBar';
-import {
-  ArrowLeft,
-  BookOpen,
-  Clock,
-  Star,
-  Check,
-  Filter,
-  Search,
-  X,
-} from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, BookOpen, Clock, Check, SlidersHorizontal, Search, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-interface StoryListProps {
-  onBack: () => void;
-  onSelectStory: (story: Story) => void;
-}
-
-const collectionLabels: Record<string, { label: string; emoji: string }> = {
-  aesop: { label: "Aesop's Fables", emoji: '🦊' },
-  grimm: { label: "Grimm's Tales", emoji: '🏰' },
-  andersen: { label: "Andersen's Tales", emoji: '🧜' },
-  world: { label: 'World Folktales', emoji: '🌍' },
-  classic: { label: 'Classic Stories', emoji: '📚' },
-  science: { label: 'Science Stories', emoji: '🔬' },
+interface StoryListProps { onBack: () => void; onSelectStory: (story: Story) => void; }
+const collectionLabels: Record<string, string> = {
+  aesop: '이솝 우화', grimm: '그림 형제 동화', andersen: '안데르센 동화',
+  world: '세계의 옛이야기', classic: '오래 사랑받은 이야기', science: '과학 이야기',
 };
 
 export function StoryList({ onBack, onSelectStory }: StoryListProps) {
   const { stories } = useProgressStore();
   const [selectedLevel, setSelectedLevel] = useState<Level | 'all'>('all');
-  const [selectedCollection, setSelectedCollection] = useState<string | 'all'>('all');
+  const [selectedCollection, setSelectedCollection] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [showFilters, setShowFilters] = useState(false);
-
-  // Filter stories
-  const filteredStories = useMemo(() => {
-    return STORIES.filter((story) => {
-      // Level filter
-      if (selectedLevel !== 'all' && story.level !== selectedLevel) {
-        return false;
-      }
-
-      // Collection filter
-      if (selectedCollection !== 'all' && story.collection !== selectedCollection) {
-        return false;
-      }
-
-      // Search filter
-      if (searchQuery) {
-        const query = searchQuery.toLowerCase();
-        return (
-          story.title.toLowerCase().includes(query) ||
-          story.titleKorean.includes(query)
-        );
-      }
-
-      return true;
-    });
-  }, [selectedLevel, selectedCollection, searchQuery]);
-
-  // Group by collection for display
-  const groupedStories = useMemo(() => {
-    if (selectedCollection !== 'all') {
-      return { [selectedCollection]: filteredStories };
-    }
-    return filteredStories.reduce((acc, story) => {
-      if (!acc[story.collection]) {
-        acc[story.collection] = [];
-      }
-      acc[story.collection].push(story);
-      return acc;
-    }, {} as Record<string, Story[]>);
-  }, [filteredStories, selectedCollection]);
-
-  const getStoryProgress = (storyId: string) => {
-    const progress = stories[storyId];
-    if (!progress) return 0;
-    const story = STORIES.find((s) => s.id === storyId);
-    if (!story) return 0;
-    return (progress.completedChapters.length / story.chapters.length) * 100;
-  };
-
-  const isStoryCompleted = (storyId: string) => {
-    return stories[storyId]?.completed || false;
-  };
+  const reduceMotion = useReducedMotion();
+  const activeFilters = selectedLevel !== 'all' || selectedCollection !== 'all';
+  const resetFilters = () => { setSelectedLevel('all'); setSelectedCollection('all'); setSearchQuery(''); };
+  const filteredStories = useMemo(() => STORIES.filter((story) => {
+    if (selectedLevel !== 'all' && story.level !== selectedLevel) return false;
+    if (selectedCollection !== 'all' && story.collection !== selectedCollection) return false;
+    const query = searchQuery.trim().toLowerCase();
+    return !query || story.title.toLowerCase().includes(query) || story.titleKorean.includes(query);
+  }), [selectedLevel, selectedCollection, searchQuery]);
+  const groupedStories = useMemo(() => filteredStories.reduce((groups, story) => {
+    (groups[story.collection] ||= []).push(story); return groups;
+  }, {} as Record<string, Story[]>), [filteredStories]);
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="min-h-screen bg-background"
-    >
-      {/* Header */}
-      <header className="sticky top-0 z-20 bg-background/95 backdrop-blur-sm border-b border-gray-100">
-        <div className="flex items-center gap-3 px-4 py-3">
-          <IconButton onClick={onBack}>
-            <ArrowLeft className="w-5 h-5" />
-          </IconButton>
-
-          <div className="flex-1">
-            <h1 className="text-xl font-bold text-gray-800">Story Quest</h1>
-            <p className="text-xs text-gray-500">스토리 퀘스트</p>
-          </div>
-
-          <IconButton onClick={() => setShowFilters(!showFilters)}>
-            <Filter className={cn('w-5 h-5', showFilters && 'text-primary')} />
-          </IconButton>
+    <motion.div initial={reduceMotion ? false : { opacity: 0 }} animate={{ opacity: 1 }} className="min-h-screen bg-background">
+      <header className="sticky top-0 z-20 border-b border-ink/10 bg-background/95 backdrop-blur-md">
+        <div className="page-width flex items-center gap-3 py-4 safe-top">
+          <IconButton onClick={onBack} aria-label="홈으로 돌아가기"><ArrowLeft size={20} /></IconButton>
+          <div className="flex-1"><p className="text-[10px] font-semibold tracking-[.14em] text-ink/50">EQUEST LIBRARY</p><h1 className="mt-0.5 text-xl font-bold tracking-tight text-ink">이야기 책장</h1></div>
+          <IconButton onClick={() => setShowFilters(!showFilters)} aria-label="검색 필터" aria-expanded={showFilters} aria-controls="story-filters" className={cn(activeFilters && 'bg-primary/10 text-primary')}><SlidersHorizontal size={20} /></IconButton>
         </div>
-
-        {/* Search bar */}
-        <div className="px-4 pb-3">
+        <div className="page-width pb-4">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search stories..."
-              className="w-full pl-10 pr-10 py-2.5 bg-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
-            />
-            {searchQuery && (
-              <button
-                onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2"
-              >
-                <X className="w-4 h-4 text-gray-400" />
-              </button>
-            )}
+            <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-ink/40" aria-hidden="true" />
+            <input aria-label="이야기 검색" value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} placeholder="제목으로 찾아보기" className="min-h-12 w-full rounded-xl border border-ink/10 bg-white py-3 pl-11 pr-12 text-sm text-ink placeholder:text-ink/45" />
+            {searchQuery && <button onClick={() => setSearchQuery('')} aria-label="검색어 지우기" className="absolute right-1 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center text-ink/50"><X size={17} /></button>}
           </div>
+          {showFilters && <div id="story-filters" className="mt-5 space-y-4 border-t border-ink/10 pt-4">
+            <label className="block text-xs font-semibold text-ink/60">읽기 단계
+              <select value={selectedLevel} onChange={(event) => setSelectedLevel(event.target.value === 'all' ? 'all' : Number(event.target.value) as Level)} className="mt-2 min-h-12 w-full rounded-lg border border-ink/15 bg-white px-3 text-sm text-ink">
+                <option value="all">모든 단계</option>{LEVEL_INFO.map((info) => <option key={info.level} value={info.level}>단계 {info.level} · {info.nameKorean}</option>)}
+              </select>
+            </label>
+            <label className="block text-xs font-semibold text-ink/60">이야기 종류
+              <select value={selectedCollection} onChange={(event) => setSelectedCollection(event.target.value)} className="mt-2 min-h-12 w-full rounded-lg border border-ink/15 bg-white px-3 text-sm text-ink">
+                <option value="all">모든 이야기</option>{Object.entries(collectionLabels).map(([key, label]) => <option key={key} value={key}>{label}</option>)}
+              </select>
+            </label>
+            {activeFilters && <button onClick={resetFilters} className="min-h-11 text-sm font-semibold text-primary">필터 초기화</button>}
+          </div>}
         </div>
-
-        {/* Filters */}
-        <AnimatePresence>
-          {showFilters && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              className="overflow-hidden border-t border-gray-100"
-            >
-              <div className="px-4 py-3 space-y-3">
-                {/* Level filter */}
-                <div>
-                  <p className="text-xs font-medium text-gray-500 mb-2">Difficulty Level</p>
-                  <div className="flex gap-2 flex-wrap">
-                    <button
-                      onClick={() => setSelectedLevel('all')}
-                      className={cn(
-                        'px-3 py-1.5 rounded-full text-sm font-medium transition-colors',
-                        selectedLevel === 'all'
-                          ? 'bg-primary text-white'
-                          : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                      )}
-                    >
-                      All
-                    </button>
-                    {LEVEL_INFO.map((info) => (
-                      <button
-                        key={info.level}
-                        onClick={() => setSelectedLevel(info.level)}
-                        className={cn(
-                          'px-3 py-1.5 rounded-full text-sm font-medium transition-colors',
-                          selectedLevel === info.level
-                            ? 'bg-primary text-white'
-                            : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                        )}
-                      >
-                        {info.emoji} Lv.{info.level}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Collection filter */}
-                <div>
-                  <p className="text-xs font-medium text-gray-500 mb-2">Collection</p>
-                  <div className="flex flex-wrap gap-2">
-                    <button
-                      onClick={() => setSelectedCollection('all')}
-                      className={cn(
-                        'px-3 py-1.5 rounded-full text-sm font-medium transition-colors',
-                        selectedCollection === 'all'
-                          ? 'bg-secondary text-white'
-                          : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                      )}
-                    >
-                      All
-                    </button>
-                    {Object.entries(collectionLabels).map(([key, { label, emoji }]) => (
-                      <button
-                        key={key}
-                        onClick={() => setSelectedCollection(key)}
-                        className={cn(
-                          'px-3 py-1.5 rounded-full text-sm font-medium transition-colors',
-                          selectedCollection === key
-                            ? 'bg-secondary text-white'
-                            : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                        )}
-                      >
-                        {emoji} {label}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </header>
 
-      {/* Content */}
-      <main className="px-4 py-4 pb-8">
-        {filteredStories.length === 0 ? (
-          <div className="text-center py-12">
-            <BookOpen className="w-12 h-12 text-gray-300 mx-auto mb-3" />
-            <p className="text-gray-500">No stories found</p>
-            <p className="text-sm text-gray-400">Try different filters</p>
+      <main className="page-width pb-12 pt-6">
+        <p className="mb-7 text-sm text-ink/55" role="status">{filteredStories.length}편의 이야기{activeFilters ? ' · 필터 적용 중' : ''}</p>
+        {filteredStories.length === 0 ? <div className="py-16 text-center">
+          <BookOpen size={32} strokeWidth={1.3} className="mx-auto mb-4 text-ink/35" aria-hidden="true" />
+          <h2 className="mb-2 text-lg font-bold text-ink">아직 찾는 이야기가 없어요</h2>
+          <p className="text-sm text-ink/60">다른 제목이나 종류로 찾아볼까요?</p>
+          <button onClick={resetFilters} className="mt-5 min-h-11 rounded-full border border-ink/20 px-5 text-sm font-semibold text-ink">전체 이야기 보기</button>
+        </div> : Object.entries(groupedStories).map(([collection, collectionStories]) => <section key={collection} className="mb-10" aria-labelledby={`collection-${collection}`}>
+          <div className="mb-1 flex items-baseline justify-between border-b border-ink/20 pb-3">
+            <h2 id={`collection-${collection}`} className="text-base font-bold text-ink">{collectionLabels[collection] || collection}</h2>
+            <span className="text-xs text-ink/45">{collectionStories.length}편</span>
           </div>
-        ) : (
-          Object.entries(groupedStories).map(([collection, collectionStories]) => (
-            <div key={collection} className="mb-6">
-              {selectedCollection === 'all' && (
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="text-xl">{collectionLabels[collection]?.emoji}</span>
-                  <h2 className="text-lg font-bold text-gray-800">
-                    {collectionLabels[collection]?.label || collection}
-                  </h2>
-                  <span className="text-sm text-gray-400">
-                    ({collectionStories.length})
-                  </span>
-                </div>
-              )}
-
-              <div className="space-y-3">
-                {collectionStories.map((story, index) => {
-                  const progress = getStoryProgress(story.id);
-                  const completed = isStoryCompleted(story.id);
-
-                  return (
-                    <motion.div
-                      key={story.id}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.05 }}
-                    >
-                      <AnimatedCard
-                        onClick={() => onSelectStory(story)}
-                        padding="none"
-                        className="overflow-hidden"
-                      >
-                        <div className="flex">
-                          {/* Thumbnail */}
-                          <div className="w-24 h-24 sm:w-28 sm:h-28 bg-gradient-to-br from-primary-100 to-primary-50 flex items-center justify-center flex-shrink-0">
-                            <span className="text-4xl">
-                              {collectionLabels[story.collection]?.emoji || '📖'}
-                            </span>
-                          </div>
-
-                          {/* Content */}
-                          <div className="flex-1 p-3 min-w-0">
-                            <div className="flex items-start justify-between gap-2">
-                              <div className="min-w-0">
-                                <h3 className="font-bold text-gray-800 truncate">
-                                  {story.title}
-                                </h3>
-                                <p className="text-sm text-gray-500 truncate">
-                                  {story.titleKorean}
-                                </p>
-                              </div>
-                              {completed && (
-                                <div className="w-6 h-6 bg-secondary rounded-full flex items-center justify-center flex-shrink-0">
-                                  <Check className="w-4 h-4 text-white" />
-                                </div>
-                              )}
-                            </div>
-
-                            {/* Meta */}
-                            <div className="flex items-center gap-3 mt-2 text-xs text-gray-400">
-                              <span className="flex items-center gap-1">
-                                <Star className="w-3 h-3" />
-                                Level {story.level}
-                              </span>
-                              <span className="flex items-center gap-1">
-                                <Clock className="w-3 h-3" />
-                                {story.estimatedMinutes} min
-                              </span>
-                              <span className="flex items-center gap-1">
-                                <BookOpen className="w-3 h-3" />
-                                {story.chapters.length} ch
-                              </span>
-                            </div>
-
-                            {/* Progress bar */}
-                            {progress > 0 && !completed && (
-                              <div className="mt-2">
-                                <ProgressBar
-                                  value={progress}
-                                  size="sm"
-                                  variant="primary"
-                                />
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                      </AnimatedCard>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </div>
-          ))
-        )}
+          {collectionStories.map((story, index) => {
+            const progress = stories[story.id];
+            const percent = Math.min(100, ((progress?.completedChapters.length || 0) / story.chapters.length) * 100);
+            return <button key={story.id} onClick={() => onSelectStory(story)} className="group flex w-full items-start gap-4 border-b border-ink/10 py-5 text-left transition-colors hover:bg-white/60 sm:gap-6">
+              <span aria-hidden="true" className="flex h-16 w-12 shrink-0 flex-col justify-between rounded-r-md border-l-[3px] border-primary/40 bg-[#eae2d5] px-2 py-2 text-ink/55 sm:h-20 sm:w-14"><BookOpen size={17} strokeWidth={1.4} /><span className="text-[10px] tabular-nums">{String(index + 1).padStart(2, '0')}</span></span>
+              <span className="min-w-0 flex-1">
+                <span className="block text-base font-bold leading-snug text-ink group-hover:text-primary">{story.title}</span>
+                <span className="mt-1 block text-sm text-ink/60">{story.titleKorean}</span>
+                <span className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-ink/50"><span>단계 {story.level}</span><span className="inline-flex items-center gap-1"><Clock size={12} aria-hidden="true" />{story.estimatedMinutes}분</span><span>{story.chapters.length}개 챕터</span>{progress?.completed && <span className="inline-flex items-center gap-1 text-secondary"><Check size={13} aria-hidden="true" />읽음</span>}</span>
+                {percent > 0 && !progress?.completed && <span className="mt-3 block h-1 max-w-44 overflow-hidden rounded-full bg-ink/10" aria-label={`${Math.round(percent)}% 읽음`}><span className="block h-full rounded-full bg-primary" style={{ width: `${percent}%` }} /></span>}
+              </span>
+              <ArrowUpRight size={18} className="mt-1 shrink-0 text-ink/35" aria-hidden="true" />
+            </button>;
+          })}
+        </section>)}
       </main>
     </motion.div>
   );

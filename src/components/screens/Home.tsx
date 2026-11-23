@@ -1,20 +1,7 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { useProgressStore } from '@/store/useProgressStore';
-import { Screen, LEARNING_MODES, LEVEL_TIERS } from '@/types';
-import { Card } from '@/components/ui/Card';
-import { Mascot } from '@/components/ui/Mascot';
-import { ProgressBar } from '@/components/ui/ProgressBar';
-import { Button } from '@/components/ui/Button';
-import {
-  Flame,
-  Star,
-  Trophy,
-  Zap,
-  Lock,
-  ChevronRight,
-  BarChart3,
-} from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { Screen } from '@/types';
+import { BookOpen, Headphones, ArrowUpRight, ArrowRight, Library, BarChart3, Award } from 'lucide-react';
 
 interface HomeProps {
   onNavigate: (screen: Screen) => void;
@@ -24,245 +11,69 @@ interface HomeProps {
 
 export function Home({ onNavigate, onStartStory, onStartVocab }: HomeProps) {
   const { userName, stats } = useProgressStore();
-
-  const currentTier =
-    LEVEL_TIERS.find((t) => stats.level >= t.min && stats.level <= t.max) ||
-    LEVEL_TIERS[0];
-
-  // XP needed for next level
-  const xpForCurrentLevel = (stats.level - 1) * 100;
-  const xpForNextLevel = stats.level * 100;
-  const xpProgress = stats.totalXP - xpForCurrentLevel;
-  const xpNeeded = xpForNextLevel - xpForCurrentLevel;
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-  };
+  const reduceMotion = useReducedMotion();
 
   return (
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-      className="min-h-screen bg-background pb-24"
-    >
-      {/* Header */}
-      <motion.header
-        variants={itemVariants}
-        className="bg-gradient-primary px-5 pt-safe-top pb-8 rounded-b-[40px] shadow-lg"
-      >
-        <div className="flex items-center justify-between mb-4 pt-4">
-          {/* User greeting */}
-          <div>
-            <p className="text-white/80 text-sm font-medium">Welcome back,</p>
-            <h1 className="text-white text-2xl font-black">{userName}! 👋</h1>
-          </div>
+    <motion.div initial={reduceMotion ? false : { opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="min-h-screen bg-background">
+      <header className="page-width flex items-center justify-between border-b border-ink/10 py-5 safe-top">
+        <div className="flex items-baseline gap-3">
+          <span className="text-2xl font-extrabold tracking-tight text-ink">EQuest<span className="text-primary">.</span></span>
+          <span className="hidden sm:inline text-xs font-medium tracking-wide text-ink/55">STORIES FOR CURIOUS MINDS</span>
+        </div>
+        <button onClick={() => onNavigate('stats')} aria-label="나의 기록 보기" className="flex min-h-11 items-center gap-2 rounded-full px-3 text-sm text-ink/75 hover:bg-ink/5">
+          <BarChart3 size={18} aria-hidden="true" /><span>나의 기록</span>
+        </button>
+      </header>
 
-          {/* Actions */}
-          <div className="flex items-center gap-2">
-            <motion.button
-              whileTap={{ scale: 0.9 }}
-              onClick={() => onNavigate('stats')}
-              className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center"
-            >
-              <BarChart3 className="w-5 h-5 text-white" />
-            </motion.button>
-            <motion.button
-              whileTap={{ scale: 0.9 }}
-              onClick={() => onNavigate('achievements')}
-              className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center"
-            >
-              <Trophy className="w-5 h-5 text-white" />
-            </motion.button>
-          </div>
+      <main className="page-width pb-12 pt-9 sm:pt-12">
+        <div className="mb-7 sm:mb-9">
+          <p className="mb-2 text-sm text-ink/60">안녕, {userName}.</p>
+          <h1 className="text-[1.9rem] font-bold leading-tight tracking-tight text-ink sm:text-4xl">오늘은 어떤 이야기가 궁금해?</h1>
         </div>
 
-        {/* Stats row */}
-        <div className="flex items-center gap-3">
-          {/* Streak */}
-          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white/20 rounded-full">
-            <Flame className="w-4 h-4 text-gold" />
-            <span className="text-white font-bold text-sm">
-              {stats.currentStreak} day{stats.currentStreak !== 1 ? 's' : ''}
-            </span>
+        <button onClick={() => onNavigate('listen')} className="group relative mb-9 block w-full overflow-hidden rounded-[1.5rem] bg-ink px-6 py-7 text-left text-white sm:px-9 sm:py-10">
+          <div className="relative z-10 max-w-[70%] sm:max-w-[60%]">
+            <span className="mb-5 inline-flex items-center gap-2 text-xs font-semibold tracking-[0.13em] text-[#d5dfd8]"><Headphones size={16} aria-hidden="true" /> 듣는 잡지 · VOL. 01</span>
+            <h2 className="mb-3 text-[1.8rem] font-semibold leading-tight tracking-tight sm:text-4xl">귀로 떠나는<br />작은 모험</h2>
+            <p className="mb-6 max-w-64 text-sm leading-relaxed text-[#d5dfd8]">좋아하는 이야기, 쉬운 영어.<br />한국어 요약도 함께 볼 수 있어요.</p>
+            <span className="inline-flex min-h-11 items-center gap-4 rounded-full bg-[#f6f3ec] px-5 text-sm font-bold text-ink">이야기 고르기 <ArrowRight size={17} className="transition-transform group-hover:translate-x-1" aria-hidden="true" /></span>
           </div>
-
-          {/* Level */}
-          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white/20 rounded-full">
-            <Star className="w-4 h-4 text-gold fill-gold" />
-            <span className="text-white font-bold text-sm">Lv.{stats.level}</span>
+          <div aria-hidden="true" className="absolute -right-9 top-1/2 -translate-y-1/2 sm:right-8">
+            <svg viewBox="0 0 220 250" className="h-52 w-40 text-[#d2b69a] opacity-75 sm:h-64 sm:w-56" fill="none">
+              <circle cx="110" cy="125" r="99" stroke="currentColor" strokeOpacity=".18" />
+              <circle cx="110" cy="125" r="78" stroke="currentColor" strokeOpacity=".22" />
+              <path d="M54 147v-34a56 56 0 0 1 112 0v34" stroke="currentColor" strokeWidth="9" strokeLinecap="round" />
+              <rect x="43" y="126" width="27" height="52" rx="13" fill="currentColor" />
+              <rect x="150" y="126" width="27" height="52" rx="13" fill="currentColor" />
+              <path d="M92 133v23m12-35v46m12-54v62m12-45v30" stroke="#f6f3ec" strokeWidth="4" strokeLinecap="round" />
+              <path d="M166 173q0 24-30 24h-12" stroke="currentColor" strokeWidth="5" strokeLinecap="round" />
+            </svg>
           </div>
+        </button>
 
-          {/* XP */}
-          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white/20 rounded-full">
-            <Zap className="w-4 h-4 text-gold" />
-            <span className="text-white font-bold text-sm">{stats.totalXP} XP</span>
+        <section aria-labelledby="explore-title">
+          <div className="mb-2 flex items-center justify-between border-b border-ink/15 pb-4">
+            <h2 id="explore-title" className="text-lg font-bold text-ink">더 둘러보기</h2>
+            <span className="text-xs tracking-wide text-ink/45">READ & DISCOVER</span>
           </div>
-        </div>
-      </motion.header>
+          {[
+            { icon: BookOpen, title: '이야기 읽기', description: '우화와 동화, 과학 이야기', action: onStartStory, number: '01' },
+            { icon: Library, title: '나의 단어장', description: '이야기에서 만난 영어 표현', action: onStartVocab, number: '02' },
+          ].map(({ icon: Icon, title, description, action, number }) => (
+            <button key={title} onClick={action} className="group flex w-full items-center gap-4 border-b border-ink/10 py-5 text-left transition-colors hover:bg-white/50 sm:gap-6">
+              <span className="text-xs tabular-nums text-ink/40">{number}</span>
+              <Icon size={24} strokeWidth={1.5} className="shrink-0 text-primary" aria-hidden="true" />
+              <span className="flex-1"><span className="block text-base font-bold text-ink">{title}</span><span className="mt-1 block text-sm text-ink/60">{description}</span></span>
+              <ArrowUpRight size={20} className="text-ink/45 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+            </button>
+          ))}
+        </section>
 
-      {/* Main content */}
-      <div className="px-5 -mt-4">
-        {/* Level Progress Card */}
-        <motion.div variants={itemVariants}>
-          <Card className="mb-6 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-24 h-24 opacity-10">
-              <Mascot size="lg" animate={false} />
-            </div>
-
-            <div className="flex items-center gap-4 mb-3">
-              <div className="w-12 h-12 bg-gradient-accent rounded-xl flex items-center justify-center shadow-lg">
-                <span className="text-white font-black text-lg">{stats.level}</span>
-              </div>
-              <div className="flex-1">
-                <h3 className="font-bold text-gray-800">{currentTier.name}</h3>
-                <p className="text-sm text-gray-500">{currentTier.nameKorean}</p>
-              </div>
-            </div>
-
-            <ProgressBar
-              value={xpProgress}
-              max={xpNeeded}
-              variant="accent"
-              size="md"
-            />
-            <p className="text-xs text-gray-400 mt-2 text-right">
-              {xpProgress}/{xpNeeded} XP to Level {stats.level + 1}
-            </p>
-          </Card>
-        </motion.div>
-
-        {/* Quick Actions */}
-        <motion.div variants={itemVariants} className="grid grid-cols-2 gap-3 mb-6">
-          <Button
-            variant="primary"
-            size="lg"
-            fullWidth
-            onClick={onStartStory}
-            className="flex-col h-auto py-5"
-          >
-            <span className="text-3xl mb-1">📚</span>
-            <span className="text-sm">Read Stories</span>
-            <span className="text-xs opacity-80">스토리 읽기</span>
-          </Button>
-
-          <Button
-            variant="secondary"
-            size="lg"
-            fullWidth
-            onClick={onStartVocab}
-            className="flex-col h-auto py-5"
-          >
-            <span className="text-3xl mb-1">🎯</span>
-            <span className="text-sm">Learn Words</span>
-            <span className="text-xs opacity-80">단어 학습</span>
-          </Button>
-        </motion.div>
-
-        {/* Learning Modes */}
-        <motion.div variants={itemVariants}>
-          <div className="flex items-center justify-between mb-3">
-            <h2 className="text-lg font-bold text-gray-800">Learning Modes</h2>
-            <span className="text-sm text-gray-400">학습 모드</span>
-          </div>
-
-          <div className="space-y-3">
-            {LEARNING_MODES.map((mode, index) => (
-              <motion.div
-                key={mode.id}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.1 * index }}
-              >
-                <Card
-                  padding="none"
-                  className={cn(
-                    'overflow-hidden transition-all duration-200',
-                    mode.available
-                      ? 'cursor-pointer hover:shadow-card-hover active:scale-98'
-                      : 'opacity-70'
-                  )}
-                  onClick={() => {
-                    if (mode.available) {
-                      if (mode.id === 'story') onStartStory();
-                      else if (mode.id === 'vocab') onStartVocab();
-                      else onNavigate(mode.screen);
-                    }
-                  }}
-                >
-                  <div className="flex items-center p-4">
-                    {/* Icon */}
-                    <div
-                      className={cn(
-                        'w-14 h-14 rounded-2xl flex items-center justify-center mr-4 bg-gradient-to-br shadow-lg',
-                        mode.gradient
-                      )}
-                    >
-                      <span className="text-2xl">{mode.icon}</span>
-                    </div>
-
-                    {/* Content */}
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2">
-                        <h3 className="font-bold text-gray-800 truncate">
-                          {mode.name}
-                        </h3>
-                        {mode.comingSoon && (
-                          <span className="px-2 py-0.5 bg-gray-100 text-gray-500 text-xs font-medium rounded-full">
-                            Soon
-                          </span>
-                        )}
-                      </div>
-                      <p className="text-sm text-gray-500 truncate">
-                        {mode.description}
-                      </p>
-                      <p className="text-xs text-gray-400 truncate">
-                        {mode.descriptionKorean}
-                      </p>
-                    </div>
-
-                    {/* Arrow or Lock */}
-                    <div className="ml-2">
-                      {mode.available ? (
-                        <ChevronRight className="w-5 h-5 text-gray-300" />
-                      ) : (
-                        <Lock className="w-5 h-5 text-gray-300" />
-                      )}
-                    </div>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Mascot greeting */}
-        <motion.div
-          variants={itemVariants}
-          className="mt-8 flex justify-center"
-        >
-          <div className="relative">
-            <Mascot size="md" mood="happy" />
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.5 }}
-              className="absolute -top-2 -right-2 bg-white rounded-full px-3 py-1 shadow-lg"
-            >
-              <span className="text-sm font-bold text-primary">Let's go!</span>
-            </motion.div>
-          </div>
-        </motion.div>
-      </div>
+        <section aria-label="나의 활동" className="mt-8 flex flex-wrap items-center justify-between gap-4 text-sm text-ink/60">
+          <p>함께 읽은 이야기 <span className="font-semibold text-ink">{stats.totalStoriesRead}</span>편 <span className="mx-2 text-ink/20">/</span> 만난 단어 <span className="font-semibold text-ink">{stats.totalWordsLearned}</span>개</p>
+          <button onClick={() => onNavigate('achievements')} className="inline-flex min-h-11 items-center gap-2 hover:text-primary"><Award size={17} aria-hidden="true" /> 나의 배지 <ArrowRight size={15} aria-hidden="true" /></button>
+        </section>
+      </main>
     </motion.div>
   );
 }

@@ -1,11 +1,10 @@
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useProgressStore } from '@/store/useProgressStore';
 import { Story, Word } from '@/types';
 import { Card } from '@/components/ui/Card';
 import { Button, IconButton } from '@/components/ui/Button';
 import { ProgressBar } from '@/components/ui/ProgressBar';
-import { Mascot } from '@/components/ui/Mascot';
 import {
   ArrowLeft,
   ArrowRight,
@@ -47,6 +46,7 @@ export function StoryReader({ story, onBack, onComplete }: StoryReaderProps) {
   // Parse content to highlight vocabulary words
   const parsedContent = useMemo(() => {
     if (!chapter) return [];
+    if (showKorean) return [{ type: 'text' as const, content: chapter.contentKorean }];
 
     // Split by marked words [[word]] and regular text
     const parts: { type: 'text' | 'vocab'; content: string; word?: Word }[] = [];
@@ -98,6 +98,8 @@ export function StoryReader({ story, onBack, onComplete }: StoryReaderProps) {
       window.speechSynthesis.speak(utterance);
     }
   }, []);
+
+  useEffect(() => () => { window.speechSynthesis?.cancel(); }, []);
 
   // Handle quiz answer selection
   const handleQuizAnswer = (questionId: string, answerIndex: number) => {
@@ -155,7 +157,7 @@ export function StoryReader({ story, onBack, onComplete }: StoryReaderProps) {
       {/* Header */}
       <header className="sticky top-0 z-20 bg-background/95 backdrop-blur-sm border-b border-gray-100">
         <div className="flex items-center gap-3 px-4 py-3">
-          <IconButton onClick={onBack}>
+          <IconButton onClick={onBack} aria-label="이야기 목록으로">
             <ArrowLeft className="w-5 h-5" />
           </IconButton>
 
@@ -170,6 +172,8 @@ export function StoryReader({ story, onBack, onComplete }: StoryReaderProps) {
 
           {/* Toggle Korean */}
           <IconButton
+            aria-label="한국어 번역 전환"
+            aria-pressed={showKorean}
             onClick={() => setShowKorean(!showKorean)}
             className={cn(showKorean && 'bg-primary/10 text-primary')}
           >
@@ -177,7 +181,7 @@ export function StoryReader({ story, onBack, onComplete }: StoryReaderProps) {
           </IconButton>
 
           {/* TTS */}
-          <IconButton onClick={() => speakText(chapter.content.replace(/\[\[|\]\]/g, ''))}>
+          <IconButton aria-label="영어 본문 듣기" onClick={() => speakText(chapter.content.replace(/\[\[|\]\]/g, ''))}>
             <Volume2 className="w-5 h-5" />
           </IconButton>
         </div>
@@ -202,7 +206,7 @@ export function StoryReader({ story, onBack, onComplete }: StoryReaderProps) {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
-              className="p-4"
+              className="page-width py-6"
             >
               {/* Chapter title */}
               <div className="mb-4">
@@ -275,7 +279,7 @@ export function StoryReader({ story, onBack, onComplete }: StoryReaderProps) {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
-              className="p-4"
+              className="page-width py-6"
             >
               <div className="flex items-center gap-2 mb-4">
                 <BookOpen className="w-5 h-5 text-primary" />
@@ -360,12 +364,12 @@ export function StoryReader({ story, onBack, onComplete }: StoryReaderProps) {
                     </div>
                     <p className="text-gray-600">
                       {quizScore === 100
-                        ? 'Perfect! 완벽해요! 🎉'
+                        ? 'Perfect! 완벽해요!'
                         : quizScore >= 80
-                        ? 'Great job! 잘했어요! 👏'
+                        ? 'Great job! 잘했어요!'
                         : quizScore >= 60
-                        ? 'Good effort! 좋아요! 👍'
-                        : 'Keep practicing! 연습해요! 💪'}
+                        ? 'Good effort! 좋아요!'
+                        : 'Keep practicing! 연습해요!'}
                     </p>
                   </Card>
 
@@ -385,7 +389,7 @@ export function StoryReader({ story, onBack, onComplete }: StoryReaderProps) {
               animate={{ opacity: 1, scale: 1 }}
               className="p-4 flex flex-col items-center justify-center min-h-[60vh]"
             >
-              <Mascot size="xl" mood="excited" />
+              <BookOpen className="h-16 w-16 text-primary" strokeWidth={1.3} aria-hidden="true" />
 
               <motion.div
                 initial={{ opacity: 0, y: 20 }}

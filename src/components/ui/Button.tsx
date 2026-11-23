@@ -13,17 +13,17 @@ interface ButtonProps extends Omit<HTMLMotionProps<'button'>, 'children'> {
 }
 
 const variantStyles: Record<ButtonVariant, string> = {
-  primary: 'bg-gradient-primary text-white shadow-button hover:shadow-lg border-b-4 border-primary-dark active:border-b-0',
-  secondary: 'bg-gradient-secondary text-white shadow-button-secondary hover:shadow-lg border-b-4 border-secondary-dark active:border-b-0',
-  accent: 'bg-gradient-accent text-white shadow-lg hover:shadow-xl border-b-4 border-accent-dark active:border-b-0',
-  gold: 'bg-gradient-gold text-amber-900 shadow-lg hover:shadow-xl border-b-4 border-gold-dark active:border-b-0',
-  sky: 'bg-gradient-sky text-white shadow-lg hover:shadow-xl border-b-4 border-sky-dark active:border-b-0',
-  outline: 'border-2 border-gray-200 bg-white text-gray-700 hover:bg-gray-50 hover:border-gray-300 shadow-card',
-  ghost: 'hover:bg-gray-100 text-gray-600',
+  primary: 'bg-primary text-white hover:bg-primary-dark',
+  secondary: 'bg-secondary text-white hover:bg-secondary-dark',
+  accent: 'bg-accent text-white hover:bg-accent-dark',
+  gold: 'bg-gold-light text-amber-900 hover:bg-gold',
+  sky: 'bg-sky text-white hover:bg-sky-dark',
+  outline: 'border border-ink/20 bg-white text-ink hover:bg-ink/5',
+  ghost: 'hover:bg-ink/5 text-ink/75',
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
-  sm: 'h-10 px-4 text-sm gap-1.5',
+  sm: 'h-11 px-4 text-sm gap-1.5',
   md: 'h-12 px-6 text-base gap-2',
   lg: 'h-14 px-8 text-lg gap-2.5',
   xl: 'h-16 px-10 text-xl gap-3',
@@ -34,9 +34,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <motion.button
         ref={ref}
-        whileTap={{ scale: 0.95, y: 2 }}
+        type="button"
+        whileTap={{ scale: 0.98 }}
         className={cn(
-          'relative inline-flex items-center justify-center rounded-2xl font-bold',
+          'relative inline-flex items-center justify-center rounded-xl font-semibold',
           'transition-all duration-150',
           'disabled:pointer-events-none disabled:opacity-50',
           variantStyles[variant],
@@ -64,7 +65,7 @@ interface IconButtonProps extends Omit<HTMLMotionProps<'button'>, 'children'> {
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
   ({ className, variant = 'ghost', size = 'md', children, ...props }, ref) => {
     const sizeMap = {
-      sm: 'w-9 h-9',
+      sm: 'w-11 h-11',
       md: 'w-11 h-11',
       lg: 'w-14 h-14',
     };
@@ -72,12 +73,13 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
     return (
       <motion.button
         ref={ref}
-        whileTap={{ scale: 0.9 }}
+        type="button"
+        whileTap={{ scale: 0.97 }}
         className={cn(
           'inline-flex items-center justify-center rounded-full',
           'transition-all duration-150',
           'disabled:pointer-events-none disabled:opacity-50',
-          variant === 'ghost' ? 'hover:bg-gray-100 text-gray-600' : variantStyles[variant],
+          variant === 'ghost' ? 'hover:bg-ink/5 text-ink/75' : variantStyles[variant],
           sizeMap[size],
           className
         )}

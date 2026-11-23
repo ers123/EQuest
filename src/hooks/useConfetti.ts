@@ -3,12 +3,13 @@ import { useCallback } from 'react';
 
 export function useConfetti() {
   const fireConfetti = useCallback(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     // First burst
     confetti({
       particleCount: 100,
       spread: 70,
       origin: { y: 0.6 },
-      colors: ['#FF7043', '#66BB6A', '#7C4DFF', '#FFD54F', '#29B6F6'],
+      colors: ['#b94b32', '#203b35', '#d2b69a'],
     });
 
     // Second burst after a short delay
@@ -18,7 +19,7 @@ export function useConfetti() {
         angle: 60,
         spread: 55,
         origin: { x: 0 },
-        colors: ['#FF7043', '#66BB6A', '#7C4DFF', '#FFD54F', '#29B6F6'],
+        colors: ['#b94b32', '#203b35', '#d2b69a'],
       });
     }, 150);
 
@@ -28,12 +29,13 @@ export function useConfetti() {
         angle: 120,
         spread: 55,
         origin: { x: 1 },
-        colors: ['#FF7043', '#66BB6A', '#7C4DFF', '#FFD54F', '#29B6F6'],
+        colors: ['#b94b32', '#203b35', '#d2b69a'],
       });
     }, 300);
   }, []);
 
   const fireStars = useCallback(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const defaults = {
       spread: 360,
       ticks: 100,
@@ -58,6 +60,7 @@ export function useConfetti() {
   }, []);
 
   const fireSchoolPride = useCallback(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const end = Date.now() + 500;
 
     const colors = ['#FF7043', '#FFD54F'];

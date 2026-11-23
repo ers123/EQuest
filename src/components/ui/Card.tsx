@@ -10,9 +10,9 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
 export const Card = forwardRef<HTMLDivElement, CardProps>(
   ({ className, variant = 'default', padding = 'md', children, ...props }, ref) => {
     const variantStyles = {
-      default: 'bg-white shadow-card',
-      glass: 'bg-white/80 backdrop-blur-lg border border-white/20 shadow-card',
-      elevated: 'bg-white shadow-card-hover',
+      default: 'bg-white border border-ink/10',
+      glass: 'bg-white/80 border border-ink/10',
+      elevated: 'bg-white border border-ink/10 shadow-card',
     };
 
     const paddingStyles = {
@@ -26,7 +26,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
       <div
         ref={ref}
         className={cn(
-          'rounded-3xl',
+          'rounded-2xl',
           variantStyles[variant],
           paddingStyles[padding],
           className
@@ -51,9 +51,9 @@ interface AnimatedCardProps extends Omit<HTMLMotionProps<'div'>, 'children'> {
 export const AnimatedCard = forwardRef<HTMLDivElement, AnimatedCardProps>(
   ({ className, variant = 'default', padding = 'md', children, ...props }, ref) => {
     const variantStyles = {
-      default: 'bg-white shadow-card',
-      glass: 'bg-white/80 backdrop-blur-lg border border-white/20 shadow-card',
-      elevated: 'bg-white shadow-card-hover',
+      default: 'bg-white border border-ink/10',
+      glass: 'bg-white/80 border border-ink/10',
+      elevated: 'bg-white border border-ink/10 shadow-card',
     };
 
     const paddingStyles = {
@@ -69,10 +69,10 @@ export const AnimatedCard = forwardRef<HTMLDivElement, AnimatedCardProps>(
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
+        whileHover={{ y: -1 }}
+        whileTap={{ scale: 0.995 }}
         className={cn(
-          'rounded-3xl cursor-pointer',
+          'rounded-2xl cursor-pointer',
           variantStyles[variant],
           paddingStyles[padding],
           className

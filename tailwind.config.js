@@ -7,60 +7,61 @@ export default {
   theme: {
     extend: {
       colors: {
-        // EQuest Brand Colors - Warm & Friendly
+        ink: '#203b35',
+        // Warm paper, ink and restrained accents
         primary: {
-          50: '#FFF3E0',
-          100: '#FFE0B2',
-          200: '#FFCC80',
-          300: '#FFB74D',
-          400: '#FFA726',
-          500: '#FF9800',
-          DEFAULT: '#FF7043', // Main Orange
-          600: '#FB8C00',
-          700: '#F57C00',
-          dark: '#E64A19',
+          50: '#fcf1eb',
+          100: '#f4dfd1',
+          200: '#e8bba5',
+          300: '#d99577',
+          400: '#c97555',
+          500: '#b94b32',
+          DEFAULT: '#b94b32', // Main Orange
+          600: '#a5402b',
+          700: '#903b29',
+          dark: '#813321',
         },
         secondary: {
-          50: '#E8F5E9',
-          100: '#C8E6C9',
-          200: '#A5D6A7',
-          DEFAULT: '#66BB6A', // Fresh Green
-          400: '#43A047',
-          500: '#2E7D32',
-          dark: '#1B5E20',
+          50: '#edf2ec',
+          100: '#d9e5d8',
+          200: '#b7cbb5',
+          DEFAULT: '#456b56', // Fresh Green
+          400: '#3c604b',
+          500: '#34533f',
+          dark: '#294333',
         },
         accent: {
-          DEFAULT: '#7C4DFF', // Fun Purple
-          light: '#B388FF',
-          dark: '#651FFF',
+          DEFAULT: '#735e72', // Fun Purple
+          light: '#b8aab6',
+          dark: '#594658',
         },
         sky: {
-          DEFAULT: '#29B6F6', // Sky Blue
-          light: '#81D4FA',
-          dark: '#0288D1',
+          DEFAULT: '#4e7180', // Sky Blue
+          light: '#b3c6cc',
+          dark: '#375866',
         },
         gold: {
-          DEFAULT: '#FFD54F', // Achievement Gold
-          light: '#FFECB3',
-          dark: '#FFC107',
+          DEFAULT: '#d6b66e', // Achievement Gold
+          light: '#eee1bf',
+          dark: '#ab873c',
         },
-        background: '#FFF8F5', // Warm cream
+        background: '#f6f3ec', // Warm cream
         surface: '#FFFFFF',
-        muted: '#F5F5F5',
+        muted: '#ede9e1',
       },
       fontFamily: {
-        sans: ['"Nunito"', 'system-ui', 'sans-serif'],
+        sans: ['-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'sans-serif'],
       },
       borderRadius: {
         '4xl': '2rem',
         '5xl': '2.5rem',
       },
       boxShadow: {
-        'card': '0 4px 20px rgba(0, 0, 0, 0.08)',
-        'card-hover': '0 8px 30px rgba(0, 0, 0, 0.12)',
-        'button': '0 4px 14px rgba(255, 112, 67, 0.4)',
-        'button-secondary': '0 4px 14px rgba(102, 187, 106, 0.4)',
-        'inner-glow': 'inset 0 2px 4px rgba(255, 255, 255, 0.6)',
+        'card': '0 2px 8px rgba(32, 59, 53, 0.035)',
+        'card-hover': '0 4px 14px rgba(32, 59, 53, 0.07)',
+        'button': 'none',
+        'button-secondary': 'none',
+        'inner-glow': 'none',
       },
       animation: {
         'bounce-slow': 'bounce 3s infinite',
@@ -109,12 +110,12 @@ export default {
         },
       },
       backgroundImage: {
-        'gradient-primary': 'linear-gradient(135deg, #FF7043 0%, #FF9800 100%)',
-        'gradient-secondary': 'linear-gradient(135deg, #66BB6A 0%, #81C784 100%)',
-        'gradient-accent': 'linear-gradient(135deg, #7C4DFF 0%, #B388FF 100%)',
-        'gradient-sky': 'linear-gradient(135deg, #29B6F6 0%, #81D4FA 100%)',
-        'gradient-gold': 'linear-gradient(135deg, #FFD54F 0%, #FFE082 100%)',
-        'gradient-warm': 'linear-gradient(180deg, #FFF8F5 0%, #FFECB3 100%)',
+        'gradient-primary': 'linear-gradient(#b94b32, #b94b32)',
+        'gradient-secondary': 'linear-gradient(#456b56, #456b56)',
+        'gradient-accent': 'linear-gradient(#735e72, #735e72)',
+        'gradient-sky': 'linear-gradient(#4e7180, #4e7180)',
+        'gradient-gold': 'linear-gradient(#eee1bf, #eee1bf)',
+        'gradient-warm': 'linear-gradient(#f6f3ec, #f6f3ec)',
       },
     },
   },

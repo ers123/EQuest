@@ -13,8 +13,8 @@ export default defineConfig({
         name: 'EQuest - English Adventure',
         short_name: 'EQuest',
         description: 'Fun English Learning for Elementary Students',
-        theme_color: '#FF7043',
-        background_color: '#FFF8F5',
+        theme_color: '#b94b32',
+        background_color: '#f6f3ec',
         display: 'standalone',
         orientation: 'portrait',
         icons: [
@@ -37,7 +37,7 @@ export default defineConfig({
         ]
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,json}'],
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,json,mp3}'],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,

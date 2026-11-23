@@ -12,9 +12,32 @@
   }
 
   body {
-    @apply bg-background text-gray-900 font-sans antialiased;
+    @apply bg-background text-ink font-sans antialiased;
     @apply min-h-screen overflow-x-hidden;
-    overscroll-behavior: none;
+    overscroll-behavior-y: contain;
+    line-height: 1.6;
+  }
+
+  button, a, input, select, textarea {
+    touch-action: manipulation;
+  }
+
+  button {
+    min-height: 44px;
+  }
+
+  :focus-visible {
+    outline: 3px solid #b94b32;
+    outline-offset: 4px;
+  }
+
+  input, select, textarea {
+    font-size: 16px;
+  }
+
+  ::selection {
+    background: #e8bba5;
+    color: #203b35;
   }
 
   /* Custom scrollbar */
@@ -36,17 +59,21 @@
 }
 
 @layer components {
-  /* Glass morphism card */
-  .glass-card {
-    @apply bg-white/80 backdrop-blur-lg border border-white/20;
-    @apply shadow-card rounded-3xl;
+  .page-width {
+    @apply mx-auto w-full max-w-4xl px-5 sm:px-8;
   }
 
-  /* 3D Button base styles */
+  /* Shared quiet surfaces */
+  .glass-card {
+    @apply bg-white/90 border border-ink/10;
+    @apply rounded-2xl;
+  }
+
+  /* Shared button base */
   .btn-3d {
     @apply relative inline-flex items-center justify-center;
     @apply font-bold rounded-2xl transition-all duration-150;
-    @apply active:scale-95 active:translate-y-1;
+    @apply active:scale-[0.98];
     @apply disabled:opacity-50 disabled:cursor-not-allowed;
   }
 
@@ -74,7 +101,7 @@
   /* Quiz option card */
   .quiz-option {
     @apply p-4 rounded-2xl border-2 border-gray-100;
-    @apply bg-white shadow-card cursor-pointer;
+    @apply bg-white cursor-pointer;
     @apply transition-all duration-200;
     @apply hover:border-primary/30 hover:shadow-card-hover;
     @apply active:scale-95;
@@ -132,5 +159,15 @@
 
   .safe-top {
     padding-top: max(1rem, env(safe-area-inset-top));
+  }
+}
+
+/* Keep movement optional for readers who prefer a still interface. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

@@ -1,0 +1,35 @@
+[
+  {
+    "id": "world-tour",
+    "title": "The Concert Has a Passport!",
+    "titleKorean": "콘서트도 여권이 필요해?",
+    "category": "무대 뒤의 세상",
+    "audience": "첫째를 위한 이야기",
+    "description": "가수 미아는 런던에 도착했는데, 분홍 달은 아직 파리에 있다고?",
+    "theme": "tour",
+    "summary": "가수 미아는 런던 공연을 앞두고 있는데, 무대에 쓸 거대한 분홍 달은 아직 파리에 있어요! 월드투어에서는 가수뿐 아니라 조명·스피커·의상·무대 장치도 이동합니다. 모든 물건을 가져오는 것은 아니고, 공연하는 도시의 장비와 현지 사람들의 도움도 받지요. 다른 도시에 있는 동생은 시차 때문에 벌써 잠자리에 들었어요. 무대 위에는 미아 한 명이 보여도, 공연의 마법은 수많은 사람이 함께 만듭니다.",
+    "text": "\"Passport?\"\n\"Here!\"\n\"Suitcase?\"\n\"Here!\"\n\"Giant pink moon?\"\n\"Wait. WHAT?\"\n\nMia is a singer. Tonight, she has a concert in London.\nHer stage has a giant pink moon.\nBut the moon is still in Paris.\n\n\"Oh, no,\" says Mia. \"My moon missed the train!\"\nHer manager laughs.\n\"The moon is coming by truck. It's too big for a suitcase.\"\n\nA world tour is a little like moving a house.\nLights, speakers, costumes—and one very large moon—all travel to the next city.\nBut the team does not bring everything.\nSome things are already there. Local workers help build the stage.\n\nThen Mia looks at her phone.\n\"It's afternoon here. Why is my little brother in bed?\"\n\"Different cities, different times,\" says her manager.\nMia sends him a quiet message.\n\"Good night. I'll sing for you tomorrow.\"\n\nThat evening, the pink moon finally arrives.\nThe lights turn on.\nThe music starts.\nMia smiles at the crowd.\n\"One singer,\" she whispers, \"and a hundred people making the magic.\"\nThen she looks up.\n\"Nice of you to join us, Moon.\""
+  },
+  {
+    "id": "parrot-hello",
+    "title": "Who Said Hello?",
+    "titleKorean": "누가 안녕이라고 했지?",
+    "category": "앵무새 탐정단",
+    "audience": "둘째를 위한 이야기",
+    "description": "문 앞에도, 소파 뒤에도 아무도 없는데… 누가 자꾸 인사하는 걸까?",
+    "theme": "bird",
+    "summary": "벤은 집에서 누군가 인사하는 소리를 듣습니다. 범인은 할머니 목소리를 흉내 낸 앵무새 키키! 일부 앵무새는 사람의 말뿐 아니라 웃음이나 전화벨 같은 소리도 배울 수 있어요. 그렇다고 언제나 사람이 원하는 말을 따라 하는 것은 아니지요. 키키는 바나나 대신 깃털 손질을 선택합니다. 마지막에는 전화벨까지 흉내 내서 벤을 깜짝 놀라게 하네요.",
+    "text": "\"Hello!\"\nBen stops.\n\"Hello?\" he says.\nNobody is at the door.\n\n\"Hello!\"\nBen looks under the table.\nNo one.\nHe looks behind the sofa.\nOne sock. No people.\n\nThen he hears a tiny laugh.\n\"Kiki?\"\nHis parrot tilts her head.\n\"Hello!\"\nBen laughs.\n\"You sound like Grandma!\"\n\nGrandma visits every Sunday. She always says hello to Kiki.\nSome parrots can learn sounds they hear.\nNot just words.\nA whistle.\nA laugh.\nEven a phone!\n\n\"Can you say 'banana'?\" asks Ben.\nKiki says nothing.\n\"Banana?\"\nNothing.\nBen waits.\nKiki starts cleaning her feathers with her beak.\n\"All right,\" says Ben. \"You're busy.\"\nHe sits down.\n\nSuddenly—\n\"RING! RING!\"\nBen runs to the phone.\nThe phone is silent.\nBehind him, Kiki tilts her head again.\n\"Hello!\""
+  },
+  {
+    "id": "pikachu-berry",
+    "title": "Pikachu and the Missing Berry",
+    "titleKorean": "피카츄와 사라진 열매",
+    "category": "작은 모험",
+    "audience": "막내를 위한 이야기",
+    "description": "사라진 파란 열매 하나. 진흙 속 작은 발자국을 따라가 보자.",
+    "theme": "berry",
+    "summary": "피카츄의 파란 열매가 사라졌어요! 피카츄와 이브이는 진흙에 남은 작은 발자국을 따라가다 구구를 발견합니다. 구구에게는 열매가 너무 커서 먹기 어려웠던 거예요. 셋은 열매를 작게 나눠 함께 먹습니다. 포켓몬 세계의 작은 탐정 이야기예요. 현실에서도 발자국은 어떤 동물이 지나갔는지 알아보는 단서가 됩니다.",
+    "text": "Pikachu has a berry.\nA big, blue berry.\n\"Snack time!\"\n\nBut—\nThe berry is gone!\n\"Eevee! Did you eat it?\"\nEevee shakes her head.\n\"Let's look!\"\n\nThey see little marks in the mud.\n\"Footprints!\"\nThey follow the footprints.\nPast a tree.\nPast a rock.\nInto the tall grass.\n\nSomething moves.\n\"Who's there?\"\nOut comes a tiny Pidgey.\nThe blue berry is beside its feet.\nPidgey pecks it.\nPeck. Peck.\nThe berry rolls away.\n\n\"Oh!\" says Eevee.\n\"It's too big!\"\nPikachu breaks the berry into small pieces.\nOne for Pidgey.\nOne for Eevee.\nOne for Pikachu.\n\n\"Snack time!\"\nThis time, nobody loses the snack."
+  }
+]

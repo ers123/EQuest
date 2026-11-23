@@ -1,0 +1,17 @@
+{
+  "world-tour": {
+    "duration": 68,
+    "voice": "macOS Samantha",
+    "wordsPerMinute": 145
+  },
+  "parrot-hello": {
+    "duration": 53,
+    "voice": "macOS Samantha",
+    "wordsPerMinute": 135
+  },
+  "pikachu-berry": {
+    "duration": 43,
+    "voice": "macOS Samantha",
+    "wordsPerMinute": 125
+  }
+}
